@@ -18,7 +18,7 @@ class Exercicio1_1Test {
 
     @ParameterizedTest
     @MethodSource("arrayProvider")
-    void should_return_correct_answers(int[][] array, String expected) {
+    void should_return_correct_answers(int[][] array, boolean expected) {
         // arrange
         // act
         boolean result = Exercicio1_1.exercicio1_1(array);
