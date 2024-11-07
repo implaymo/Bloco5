@@ -4,15 +4,12 @@ public class Exercicio1_3 {
 
     public static boolean exercicio1_3(int[][] array){
         int totalColumns = array.length;
-        boolean isNotRectAndSquare = false;
         for (int i = 0; i < totalColumns; i++) {
-            if (totalColumns != array[i].length && isColumnsDifferent(array, array[i])) {
-                isNotRectAndSquare = true;
-            } else {
-                isNotRectAndSquare = false;
+            if (isColumnsDifferent(array, array[i])) {
+                return true;
             }
         }
-        return isNotRectAndSquare;
+        return false;
     }
 
 
