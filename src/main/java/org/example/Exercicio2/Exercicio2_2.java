@@ -2,8 +2,8 @@ package org.example.Exercicio2;
 
 public class Exercicio2_2 {
 
-    public static int exercicio2_2(int[][] array) {
-            if (array[0].length == 0) {
+    public static int getHighestNumber(int[][] array) {
+            if (isArrayEmpty(array)) {
                 return -1;
             }
 
@@ -25,5 +25,15 @@ public class Exercicio2_2 {
                 }
             }
             return numberToCheck;
+        }
+
+
+        public static boolean isArrayEmpty(int[][] array){
+            for (int i = 0; i < array.length; i++) {
+                if (array[i].length == 0) {
+                    return true;
+                }
+            }
+            return false;
         }
 }

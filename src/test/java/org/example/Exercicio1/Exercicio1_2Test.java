@@ -4,14 +4,11 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 class Exercicio1_2Test {
 
@@ -25,7 +22,7 @@ class Exercicio1_2Test {
     void should_return_correct_answers(int[][] array, boolean expected) {
         //arrange
         //act
-        boolean result = Exercicio1_2.exercicio1_2(array);
+        boolean result = Exercicio1_2.isMatrixRectangle(array);
         //assert
         assertEquals(expected, result);
     }

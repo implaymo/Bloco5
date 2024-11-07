@@ -2,7 +2,7 @@ package org.example.Exercicio1;
 
 public class Exercicio1_3 {
 
-    public static boolean exercicio1_3(int[][] array){
+    public static boolean isMatrixNotSquareOrRect(int[][] array){
         int totalColumns = array.length;
         for (int i = 0; i < totalColumns; i++) {
             if (isColumnsDifferent(array, array[i])) {

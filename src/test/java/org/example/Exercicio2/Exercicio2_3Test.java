@@ -9,11 +9,11 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Exercicio2_2Test {
+class Exercicio2_3Test {
 
     @Test
     void test_constructor() {
-        new Exercicio2_2();
+        new Exercicio2_3();
     }
 
     @ParameterizedTest
@@ -21,7 +21,7 @@ class Exercicio2_2Test {
     void should_return_correct_answers(int[][] array, int expected) {
         //arrange
         //act
-        int result = Exercicio2_2.getHighestNumber(array);
+        double result = Exercicio2_3.exercicio2_3(array);
         //assert
         assertEquals(expected, result);
     }
@@ -29,12 +29,11 @@ class Exercicio2_2Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider() {
         return Stream.of(
-                Arguments.of(new int[][]{{1, 1},{2}, {3, 3}}, 3),
-                Arguments.of(new int[][]{{1, 3},{2, 5}, {6, 7}}, 7),
-                Arguments.of(new int[][]{{},{}, {}}, -1),
-                Arguments.arguments(new int[][]{{1, 1},{2, 2}, {3}}, 3),
-                Arguments.arguments(new int[][]{{1},{}, {3}}, -1),
-                Arguments.arguments(new int[][]{{}, {}, {}}, -1)
+                Arguments.of(new int[][]{{1, 1},{2}, {3, 3}}, 5.0),
+                Arguments.of(new int[][]{{1, 3},{2, 5}, {6, 7}}, 7.0),
+                Arguments.of(new int[][]{{} ,{}, {}}, -1),
+                Arguments.arguments(new int[][]{{1, 1},{}, {3}}, 3.0),
+                Arguments.arguments(new int[][]{{1, },{2, }, {3}}, 2.0)
         );
     }
 }

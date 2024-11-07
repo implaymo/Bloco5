@@ -2,8 +2,8 @@ package org.example.Exercicio2;
 
 public class Exercicio2_1 {
 
-    public static int exercicio2_1(int[][] array) {
-        if (array[0].length == 0) {
+    public static int getLowestNumber(int[][] array) {
+        if (Exercicio2_2.isArrayEmpty(array)) {
             return -1;
         }
 

@@ -21,7 +21,7 @@ class Exercicio2_1Test {
     void should_return_correct_answers(int[][] array, int expected) {
         //arrange
         //act
-        int result = Exercicio2_1.exercicio2_1(array);
+        int result = Exercicio2_1.getLowestNumber(array);
         //assert
         assertEquals(expected, result);
     }
@@ -33,9 +33,9 @@ class Exercicio2_1Test {
                 Arguments.of(new int[][]{{1, 3},{2, 5}, {6, 7}}, 1),
                 Arguments.of(new int[][]{{}, {}, {}}, -1),
                 Arguments.arguments(new int[][]{{1, 1},{2, 2}, {3}}, 1),
-                Arguments.arguments(new int[][]{{1 , },{2, }, {3, }}, 1)
-
-        );
+                Arguments.arguments(new int[][]{{1 , },{2, }, {3, }}, 1),
+                Arguments.arguments(new int[][]{{1,2},{2, 2}, {}}, -1)
+                );
     }
 
 }

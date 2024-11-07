@@ -21,7 +21,7 @@ class Exercicio1_3Test {
     void should_return_correct_answers(int[][] array, boolean expected) {
         //arrange
         //act
-        boolean result = Exercicio1_3.exercicio1_3(array);
+        boolean result = Exercicio1_3.isMatrixNotSquareOrRect(array);
         //assert
         assertEquals(expected, result);
     }
