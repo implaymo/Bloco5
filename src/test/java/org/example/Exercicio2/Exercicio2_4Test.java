@@ -19,7 +19,7 @@ class Exercicio2_4Test {
 
     @ParameterizedTest
     @MethodSource("arrayProvider")
-    void should_return_correct_answers(int[][] array, double expected) {
+    void should_return_correct_answers(int[][] array, int expected) {
         //arrange
         //act
         int result = Exercicio2_4.exercicio2_4(array);
@@ -34,8 +34,10 @@ class Exercicio2_4Test {
                 Arguments.of(new int[][]{{1, 3},{2, 5}, {6, 7}}, 1260),
                 Arguments.of(new int[][]{{} ,{}, {}}, -1),
                 Arguments.arguments(new int[][]{{1, 1},{}, {3}}, -1),
-                Arguments.arguments(new int[][]{{1, },{2, }, {3}}, 6),
-                Arguments.arguments(new int[][]{{1, 2},{2, 3}, {}}, -1)
+                Arguments.arguments(new int[][]{{1, },{2, }, {0, }}, 0),
+                Arguments.arguments(new int[][]{{1, 2},{2, 3}, {}}, -1),
+                Arguments.arguments(new int[][]{{1, 2},{2, 3}, {0}}, 0)
+
         );
     }
 }
