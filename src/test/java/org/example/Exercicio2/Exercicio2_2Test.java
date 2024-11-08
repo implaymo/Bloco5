@@ -22,6 +22,7 @@ class Exercicio2_2Test {
         //arrange
         //act
         int result = Exercicio2_2.getHighestNumber(array);
+
         //assert
         assertEquals(expected, result);
     }
