@@ -3,7 +3,7 @@ package org.example.Exercicio2;
 
 public class Exercicio2_5 {
 
-    public static int[] exercicio2_5(int[][] array) {
+    public static int[] notRepeatedElements(int[][] array) {
         if (Exercicio2_2.isArrayEmpty(array)) {
             return new int[]{-1};
         }

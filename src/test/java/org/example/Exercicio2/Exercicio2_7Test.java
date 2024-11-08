@@ -9,11 +9,11 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Exercicio2_5Test {
+class Exercicio2_7Test {
 
     @Test
     void test_constructor() {
-        new Exercicio2_5();
+        new Exercicio2_7();
     }
 
     @ParameterizedTest
@@ -21,7 +21,7 @@ class Exercicio2_5Test {
     void should_return_correct_answers(int[][] array, int[] expected) {
         //arrange
         //act
-        int[] result = Exercicio2_5.notRepeatedElements(array);
+        int[] result = Exercicio2_7.principalMatrixDiagonal(array);
         //assert
         assertArrayEquals(expected, result);
     }
@@ -29,12 +29,15 @@ class Exercicio2_5Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider() {
         return Stream.of(
-                Arguments.of(new int[][]{{1, 1},{2}, {3, 3}}, new int[]{2}),
-                Arguments.of(new int[][]{{1, 0},{2, 5}, {6, 7}}, new int[]{1,0,2,5,6,7}),
-                Arguments.of(new int[][]{{} ,{}, {}}, new int[]{-1}),
-                Arguments.arguments(new int[][]{{1, 1},{}, {3}}, new int[]{-1}),
-                Arguments.arguments(new int[][]{{1, },{0, }, {3}}, new int[]{1,0,3}),
-                Arguments.arguments(new int[][]{{1, 2},{2, 3}, {}}, new int[]{-1})
+                Arguments.of(new int[][]{{1, 1}, {2,2}}, new int[]{1, 2}),
+                Arguments.of(new int[][]{{1, 2}, {2,3}, {3,4}}, new int[]{1,3}),
+                Arguments.of(new int[][]{{1, 2, 3}, {3, 4, 5}, {6, 7, 8}}, new int[]{1, 4, 8}),
+                Arguments.of(new int[][]{{}, {}, {}}, new int[]{-1}),
+                Arguments.of(new int[][]{{1, 1}, {}, {3}}, new int[]{-1}),
+                Arguments.of(new int[][]{{1}, {0}, {3}}, new int[]{1}),
+                Arguments.of(new int[][]{{1, 2}, {2, 3}, {}}, new int[]{-1})
         );
     }
+
+
 }

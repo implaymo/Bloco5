@@ -21,7 +21,7 @@ class Exercicio2_3Test {
     void should_return_correct_answers(int[][] array, double expected) {
         //arrange
         //act
-        double result = Exercicio2_3.exercicio2_3(array);
+        double result = Exercicio2_3.averageNumber(array);
         //assert
         assertEquals(expected, result);
     }

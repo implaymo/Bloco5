@@ -22,7 +22,7 @@ class Exercicio2_4Test {
     void should_return_correct_answers(int[][] array, int expected) {
         //arrange
         //act
-        int result = Exercicio2_4.exercicio2_4(array);
+        int result = Exercicio2_4.productOfElements(array);
         //assert
         assertEquals(expected, result);
     }

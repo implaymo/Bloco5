@@ -2,7 +2,7 @@ package org.example.Exercicio2;
 
 public class Exercicio2_4 {
 
-    public static int exercicio2_4(int[][] array){
+    public static int productOfElements(int[][] array){
         if (Exercicio2_2.isArrayEmpty(array)){
             return -1;
         }

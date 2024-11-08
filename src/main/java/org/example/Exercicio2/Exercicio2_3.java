@@ -2,7 +2,7 @@ package org.example.Exercicio2;
 
 public class Exercicio2_3 {
 
-    public static double exercicio2_3(int[][] array){
+    public static double averageNumber(int[][] array){
         if (Exercicio2_2.isArrayEmpty(array)){
             return -1;
         }
