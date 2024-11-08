@@ -14,7 +14,7 @@ public class Exercicio2_7 {
         if(Exercicio1_1.isMatrixSquare(array) || Exercicio1_2.isMatrixRectangle(array)){
             int index = 0;
             for (int i = 0; i < array[0].length; i++){
-                principalDiagonalNumbers[index] = getDiagonalNumbers(array[i], index);
+                principalDiagonalNumbers[index] = getNumberBelongsPrincipalDiagonal(array[i], index);
                 index++;
             }
             return principalDiagonalNumbers;
@@ -22,7 +22,7 @@ public class Exercicio2_7 {
         return new int[]{-1};
     }
 
-    public static int getDiagonalNumbers(int[]array, int index){
+    public static int getNumberBelongsPrincipalDiagonal(int[]array, int index){
         int number = 0;
         for (int i = 0; i < array.length; i++) {
             number = array[index];
