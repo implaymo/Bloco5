@@ -5,9 +5,9 @@ import org.example.Exercicio1.Exercicio1_1;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
-public class Exercicio2_10 {
+public class Exercicio2_10_1 {
 
-    public static double[][] invertedMatrix(int[][]matrix) {
+    public static double[][] invertedMatrix2By2(int[][]matrix) {
         if (Exercicio2_2.isArrayEmpty((matrix))){
             return new double[][]{{-1}, {-1}};
         }
