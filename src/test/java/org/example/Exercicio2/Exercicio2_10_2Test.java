@@ -28,9 +28,9 @@ class Exercicio2_10_2Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider() {
         return Stream.of(
-                Arguments.of(new int[][]{{3, 0, 2}, {2, 0, -2}, {0, 1, 1}},
-                        new double[][]{{0.2, 0.2, 0}, {-0.2, 0.3, 1}, {0.2, -0.3, 0}}
-                ),
+                Arguments.of(new int[][]{{4, 3, 1}, {7, 5, 8}, {2, 6, 9}},
+                        new double[][]{{-0.3704, 0.2593, 0.0370}, {0.3333, -0.2222, 0.1111}, {-0.0741, 0.1481, -0.0370}})
+                ,
                 Arguments.of(new int[][]{{4, 7}, {2, 6, 3}}, new double[][]{{-1}, {-1}}),
                 Arguments.of(new int[][]{{4, 8}, {2, 4}}, new double[][]{{-1}, {-1}}),
                 Arguments.of(new int[][]{{}, {2, 6}}, new double[][]{{-1.0}, {-1.0}})
