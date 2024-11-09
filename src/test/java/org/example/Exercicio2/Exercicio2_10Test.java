@@ -30,6 +30,8 @@ class Exercicio2_10Test {
     private static Stream<Arguments> arrayProvider() {
         return Stream.of(
                 Arguments.of(new int[][]{{4, 7}, {2, 6}}, new double[][]{{0.6, -0.7}, {-0.2, 0.4}}),
+                Arguments.of(new int[][]{{4, 7}, {2, 6, 3}}, new double[][]{{-1}, {-1}}),
+                Arguments.of(new int[][]{{4, 8}, {2, 4}}, new double[][]{{-1}, {-1}}),
                 Arguments.of(new int[][]{{}, {2, 6}}, new double[][]{{-1.0}, {-1.0}})
         );
     }

@@ -32,6 +32,7 @@ class Exercicio2_7Test {
                 Arguments.of(new int[][]{{1, 1}, {2,2}}, new int[]{1, 2}),
                 Arguments.of(new int[][]{{1, 2}, {2,3}, {3,4}}, new int[]{1,3}),
                 Arguments.of(new int[][]{{1, 2, 3}, {3, 4, 5}, {6, 7, 8}}, new int[]{1, 4, 8}),
+                Arguments.of(new int[][]{{1, 2}, {2,3}, {3,4,5}}, new int[]{-1}),
                 Arguments.of(new int[][]{{}, {}, {}}, new int[]{-1}),
                 Arguments.of(new int[][]{{1, 1}, {}, {3}}, new int[]{-1}),
                 Arguments.of(new int[][]{{1}, {0}, {3}}, new int[]{1}),

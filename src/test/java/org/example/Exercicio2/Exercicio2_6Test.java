@@ -34,7 +34,8 @@ class Exercicio2_6Test {
                 Arguments.of(new int[][]{{}, {}, {}}, new int[]{-1}),
                 Arguments.of(new int[][]{{1, 1}, {}, {3}}, new int[]{-1}),
                 Arguments.of(new int[][]{{1}, {0}, {3}}, new int[]{3}),
-                Arguments.of(new int[][]{{1, 2}, {2, 3}, {}}, new int[]{-1})
-        );
+                Arguments.of(new int[][]{{1, 2}, {2, 3}, {}}, new int[]{-1}),
+                Arguments.of(new int[][]{{1, 1}, {2}, {9, 3}}, new int[]{2, 3})
+                );
     }
 }

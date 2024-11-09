@@ -31,7 +31,9 @@ class Exercicio2_9Test {
         return Stream.of(
                 Arguments.of(new int[][]{{1, 0}, {0, 1}}, true),
                 Arguments.of(new int[][]{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, true),
+                Arguments.of(new int[][]{{1, 0, 0}, {0, 1, 0}, {0, 0, 0}}, false),
                 Arguments.of(new int[][]{{1, 0, 0, 0}, {0, 1, 0, 0}, {0, 0, 1, 0}, {0, 0, 0, 1}}, true),
+                Arguments.of(new int[][]{{1, 0, 1, 0}, {0, 1, 1, 1}, {0, 1, 1, 0}, {0, 1, 0, 1}}, false),
                 Arguments.of(new int[][]{{}, {}, {}}, false),
                 Arguments.of(new int[][]{{1, 1}, {}, {3}}, false),
                 Arguments.of(new int[][]{{1}, {0}, {3}}, false),

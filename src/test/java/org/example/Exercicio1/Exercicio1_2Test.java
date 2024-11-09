@@ -32,6 +32,7 @@ class Exercicio1_2Test {
         return Stream.of(
                 Arguments.of(new int[][]{{1, 1},{2, 2}, {3, 3}}, true),
                 Arguments.of(new int[][]{{1, 1},{2, 2, 2}, {3, 3, 3}}, false),
+                Arguments.of(new int[][]{{1, 2},{2, 2}}, false),
                 Arguments.of(new int[][]{{},{}, {}}, true),
                 Arguments.arguments(new int[][]{{1, 1},{2, 2}, {3}}, false)
         );
