@@ -9,11 +9,11 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Exercicio2_10Test {
+class Exercicio2_10_1Test {
 
     @Test
     void test_constructor() {
-        new Exercicio2_10();
+        new Exercicio2_10_1();
     }
 
     @ParameterizedTest
@@ -21,7 +21,7 @@ class Exercicio2_10Test {
     void should_return_correct_answers(int[][] matrix, double[][] expected) {
         //arrange
         //act
-        double[][] result = Exercicio2_10.invertedMatrix(matrix);
+        double[][] result = Exercicio2_10_1.invertedMatrix2By2(matrix);
         //assert
         assertArrayEquals(expected, result);
     }
