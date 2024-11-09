@@ -9,19 +9,19 @@ import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class Exercicio2_10Test {
+class Exercicio2_11Test {
 
     @Test
     void test_constructor() {
-        new Exercicio2_10();
+        new Exercicio2_11();
     }
 
     @ParameterizedTest
     @MethodSource("arrayProvider")
-    void should_return_correct_answers(int[][] matrix, double[][] expected) {
+    void should_return_correct_answers(int[][] matrix, int[][] expected) {
         //arrange
         //act
-        double[][] result = Exercicio2_10.invertedMatrix(matrix);
+        int[][] result = Exercicio2_11.transposeMatrix(matrix);
         //assert
         assertArrayEquals(expected, result);
     }
@@ -29,8 +29,9 @@ class Exercicio2_10Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider() {
         return Stream.of(
-                Arguments.of(new int[][]{{4, 7}, {2, 6}}, new double[][]{{0.6, -0.7}, {-0.2, 0.4}}),
-                Arguments.of(new int[][]{{}, {2, 6}}, new double[][]{{-1.0}, {-1.0}})
+                Arguments.of(new int[][]{{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}},
+                        new int[][]{{1, 5, 9, 13}, {2, 6, 10, 14}, {3, 7, 11, 15}, {4, 8, 12, 16}}),
+                Arguments.of(new int[][]{{}, {2, 6}}, new int[][]{{-1}, {-1}})
         );
     }
 }
