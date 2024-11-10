@@ -11,7 +11,7 @@ public class Exercicio2_10_2 {
 
         if (Exercicio1_1.isMatrixSquare(matrix)) {
             int[] arrayOfDeterminants = getAllSubMatrixDeterminants(matrix);
-            int determinant = getAllSubMatrixDeterminant(arrayOfDeterminants);
+            int determinant = calculateDeterminantOfMatrix(arrayOfDeterminants);
             checkIfMatrixInvertible(determinant);
 //            int coFactor = getCoFactor(coFactorOfAll2x2Matrix(matrix));
         }
@@ -38,7 +38,7 @@ public class Exercicio2_10_2 {
 
 
     public static int determinantOfSubMatrix(int[][]matrix, int row, int column) {
-        int[][] subMatrix = new int[2][2];
+        int[][] subMatrix = new int[matrix.length - 1][matrix.length - 1];
         int subRow = 0;
         int subColumn = 0;
         for (int i = 0; i < matrix.length; i++){
@@ -48,7 +48,7 @@ public class Exercicio2_10_2 {
                 }
                 subMatrix[subRow][subColumn] = matrix[i][j];
                 subColumn++;
-                if (subColumn == 2) {
+                if (subColumn == subMatrix.length) {
                     subColumn = 0;
                     subRow++;
                 }
@@ -65,7 +65,7 @@ public class Exercicio2_10_2 {
         return determinant;
     }
 
-    public static int getAllSubMatrixDeterminant(int[] arrayOfAllSubMatrixDeterminants) {
+    public static int calculateDeterminantOfMatrix(int[] arrayOfAllSubMatrixDeterminants) {
         int determinant = 0;
         for (int i = 0; i < arrayOfAllSubMatrixDeterminants.length; i++) {
             if (i % 2 == 0) {
