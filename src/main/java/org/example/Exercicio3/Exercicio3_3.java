@@ -6,23 +6,19 @@ public class Exercicio3_3 {
 
     public static int[][] productOfTwoMatrix(int[][]matrixOne, int[][]matrixTwo) {
         if (Exercicio2_2.isArrayEmpty((matrixOne))){
-            return new int[][]{{-1, -1}, {-1, -1}};
+            return new int[][]{{-1}, {-1}};
         } else if (Exercicio2_2.isArrayEmpty(matrixTwo)) {
-            return new int[][]{{-1, -1},{-1, -1}};
+            return new int[][]{{-1},{-1}};
         }
-        int[][] newMatrix = new int[matrixOne.length][matrixOne[0].length];
+
+        int[][] newMatrix = new int[matrixOne.length][matrixOne.length];
         int product = 0;
-        int sum = 0;
         int row = 0;
-        int column = 0;
         for (int i = 0; i < matrixOne.length; i++) {
             for (int j = 0; j < matrixOne.length; j++) {
-                sum = 0;
-                row = 0;
                 product = calculation(matrixOne, matrixTwo, i, row,j);
-                newMatrix[j][column] = product;
+                newMatrix[j][i] = product;
             }
-            column++;
         }
         return newMatrix;
     }
@@ -33,6 +29,6 @@ public class Exercicio3_3 {
             sum += (matrixOne[line][k] * matrixTwo[row][index]);
             row++;
         }
-       return sum;
+        return sum;
     }
 }
