@@ -120,5 +120,31 @@ class Exercicio4_2Test {
                         true
                 )
         );
+
+    }
+    @ParameterizedTest
+    @MethodSource("arrayProvider5")
+    void should_return_correct_answers_if_Word_Diagonal(char[][] boardGame, ArrayList<Character> wordToFind, boolean expected) {
+        //arrange
+        //act
+        boolean result = Exercicio4_2.isWordDiagonal(boardGame, wordToFind);
+        //assert
+        assertEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider5() {
+        return Stream.of(
+                Arguments.of(
+                        new char[][]{{'C', 'X', 'X'}, {'X', 'A', 'X'}, {'X', 'X', 'T'}},
+                        new ArrayList<>(Arrays.asList('C', 'A', 'T')),
+                        true
+                ),
+                Arguments.of(
+                        new char[][]{{'C', 'X'}, {'X', 'A'}, {'X', 'X'}},
+                        new ArrayList<>(Arrays.asList('C', 'A')),
+                        true
+                )
+        );
     }
 }
