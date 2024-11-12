@@ -20,7 +20,7 @@ public class Exercicio4_2 {
     public static boolean isWordHorizontal(char[][] boardGame, ArrayList<Character> wordToFind){
         for (int row = 0; row < boardGame.length; row++) {
             for (int column = 0; column <= boardGame[0].length - wordToFind.size(); column++) {
-                if(isWordMatchHorizontal(boardGame, wordToFind, row,column)){
+                if(matchHorizontal(boardGame, wordToFind, row,column)){
                     return true;
                 }
             }
@@ -32,7 +32,7 @@ public class Exercicio4_2 {
     public static boolean isWordHorizontalReversed(char[][] boardGame, ArrayList<Character> wordToFind){
         for (int row = 0; row < boardGame.length; row++) {
             for (int column = boardGame[0].length - 1; column >= wordToFind.size() - 1; column--) {
-                if(isWordMatchHorizontalReversed(boardGame, wordToFind, row ,column)){
+                if(matchHorizontalReversed(boardGame, wordToFind, row ,column)){
                     return true;
                 }
             }
@@ -43,7 +43,7 @@ public class Exercicio4_2 {
     public static boolean isWordVertical(char[][] boardGame, ArrayList<Character> wordToFind) {
         for (int column = 0; column < boardGame[0].length; column++) {
             for (int row = 0; row <= boardGame.length - wordToFind.size(); row++) {
-                if(isWordMatchVertical(boardGame, wordToFind, row, column)){
+                if(matchVertical(boardGame, wordToFind, row, column)){
                     return true;
                 }
             }
@@ -54,7 +54,7 @@ public class Exercicio4_2 {
     public static boolean isWordVerticalReversed(char[][] boardGame, ArrayList<Character> wordToFind) {
         for (int column = 0; column < boardGame[0].length; column++) {
             for (int row = boardGame.length - 1; row >= wordToFind.size() - 1; row--) {
-                if(isWordMatchVerticalReversed(boardGame, wordToFind, row, column)){
+                if(matchVerticalReversed(boardGame, wordToFind, row, column)){
                     return true;
                 }
             }
@@ -65,7 +65,7 @@ public class Exercicio4_2 {
     public static boolean isWordDiagonalTopLeft(char[][] boardGame, ArrayList<Character> wordToFind) {
         for (int row = 0; row < boardGame.length; row++) {
             for(int column = 0; column < boardGame[0].length; column++) {
-                if(isWordMatchDiagonalTopLeftStart(boardGame, wordToFind, row, column)) {
+                if(matchDiagonalTopLeft(boardGame, wordToFind, row, column)) {
                     return true;
                 }
             }
@@ -76,7 +76,7 @@ public class Exercicio4_2 {
     public static boolean isWordDiagonalBottomLeft(char[][] boardGame, ArrayList<Character> wordToFind) {
         for (int row = boardGame.length -1 ; row > 0; row--) {
             for(int column = 0; column < boardGame[0].length; column++) {
-                if(isWordMatchDiagonalBottomLeftStart(boardGame, wordToFind, row, column)) {
+                if(matchDiagonalBottomLeft(boardGame, wordToFind, row, column)) {
                     return true;
                 }
             }
@@ -87,7 +87,7 @@ public class Exercicio4_2 {
     public static boolean isWordDiagonalTopRight(char[][] boardGame, ArrayList<Character> wordToFind) {
         for (int row = 0; row < boardGame.length; row++) {
             for(int column = boardGame[0].length - 1; column > 0; column--) {
-                if(isWordMatchDiagonalTopRightStart(boardGame, wordToFind, row, column)) {
+                if(matchDiagonalTopRight(boardGame, wordToFind, row, column)) {
                     return true;
                 }
             }
@@ -98,7 +98,7 @@ public class Exercicio4_2 {
     public static boolean isWordDiagonalBottomRight(char[][] boardGame, ArrayList<Character> wordToFind) {
         for (int row = boardGame.length - 1; row > 0; row--) {
             for(int column = boardGame[0].length - 1; column > 0; column--) {
-                if(isWordMatchDiagonalBottomRightStart(boardGame, wordToFind, row, column)) {
+                if(matchDiagonalBottomRight(boardGame, wordToFind, row, column)) {
                     return true;
                 }
             }
@@ -109,7 +109,7 @@ public class Exercicio4_2 {
 
     // Check Match Words in every direction
 
-    public static boolean isWordMatchHorizontal(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
+    public static boolean matchHorizontal(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
         for (int i = 0; i < wordToFind.size(); i++) {
             if (boardGame[row][column + i] != wordToFind.get(i)){
                 return false;
@@ -118,7 +118,7 @@ public class Exercicio4_2 {
         return true;
     }
 
-    public static boolean isWordMatchHorizontalReversed(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
+    public static boolean matchHorizontalReversed(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
         for (int i = 0; i < wordToFind.size(); i++) {
             if (boardGame[row][column - i] != wordToFind.get(i)){
                 return false;
@@ -128,7 +128,7 @@ public class Exercicio4_2 {
     }
 
 
-    public static boolean isWordMatchVertical(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
+    public static boolean matchVertical(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
         for (int i = 0; i < wordToFind.size(); i++) {
             if (boardGame[row + i][column] != wordToFind.get(i)){
                 return false;
@@ -137,7 +137,7 @@ public class Exercicio4_2 {
         return true;
     }
 
-    public static boolean isWordMatchVerticalReversed(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
+    public static boolean matchVerticalReversed(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
         for (int i = 0; i < wordToFind.size(); i++) {
             if (boardGame[row - i][column] != wordToFind.get(i)){
                 return false;
@@ -147,7 +147,7 @@ public class Exercicio4_2 {
     }
 
 
-    public static boolean isWordMatchDiagonalTopLeftStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+    public static boolean matchDiagonalTopLeft(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
         if (row + wordToFind.size() <= boardGame.length && column + wordToFind.size() <= boardGame[0].length) {
             boolean match = true;
             for (int i = 0; i < wordToFind.size(); i++) {
@@ -163,7 +163,7 @@ public class Exercicio4_2 {
         return false;
     }
 
-    public static boolean isWordMatchDiagonalBottomLeftStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+    public static boolean matchDiagonalBottomLeft(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
         if (row - wordToFind.size() >= -1 && column + wordToFind.size() <= boardGame[0].length) {
             boolean match = true;
             for (int i = 0; i < wordToFind.size(); i++) {
@@ -179,7 +179,7 @@ public class Exercicio4_2 {
         return false;
     }
 
-    public static boolean isWordMatchDiagonalTopRightStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+    public static boolean matchDiagonalTopRight(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
         if (row + wordToFind.size() <= boardGame.length && column - wordToFind.size() >= -1) {
             boolean match = true;
             for (int i = 0; i < wordToFind.size(); i++) {
@@ -195,7 +195,7 @@ public class Exercicio4_2 {
         return false;
     }
 
-    public static boolean isWordMatchDiagonalBottomRightStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+    public static boolean matchDiagonalBottomRight(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
         if (row - wordToFind.size() >= -1 && column - wordToFind.size() >= -1) {
             boolean match = true;
             for (int i = 0; i < wordToFind.size(); i++) {

@@ -19,27 +19,32 @@ class Exercicio4_3Test {
     }
 
     @ParameterizedTest
-    @MethodSource("arrayProvider")
-    void should_return_correct(char[][] boardGame, ArrayList<Character> wordToFind, int rowFirstChar,
-                               int columnFirstChar, int rowLastChar,
-                               int columnLastChar , boolean expected) {
-        //arrange
-        //act
-        boolean result = Exercicio4_3.findWordProvided(boardGame, wordToFind,
-                rowFirstChar,columnFirstChar, rowLastChar, columnLastChar);
-        //assert
+    @MethodSource("valid_tests_for_every_direction")
+    void valid_tests_for_every_direction(char[][] boardGame, ArrayList<Character> wordToFind,int rowBeginWord,
+                                         int columnBeginWord, int rowEndWord, int columnEndWord, boolean expected) {
+        // arrange
+
+        // act
+        boolean result = Exercicio4_3.findWordProvided(boardGame, wordToFind, rowBeginWord, columnBeginWord, rowEndWord, columnEndWord);
+
+        // assert
         assertEquals(expected, result);
     }
 
-    // This method provides test data to the parameterized test
-    private static Stream<Arguments> arrayProvider() {
+    private static Stream<Arguments> valid_tests_for_every_direction() {
         return Stream.of(
-                Arguments.of(
-                        new char[][]{{'C', 'X', 'X'}, {'X', 'A', 'X'}, {'X', 'X', 'T'}},
-                        new ArrayList<>(Arrays.asList('C', 'A', 'T')),
-                        0, 0, 2, 2,
-                        true
-                )
+                Arguments.of((Object) new char[][]
+                        {
+                                {'a', 'b', 'c'},
+                                {'d', 'e', 'f'},
+                                {'g', 'h', 'i'}
+                        }, new ArrayList<Character>(Arrays.asList('a', 'b', 'c')), 0, 0, 0, 2, true),
+                Arguments.of((Object) new char[][]
+                        {
+                                {'a', 'b', 'c'},
+                                {'d', 'e', 'f'},
+                                {'g', 'h', 'i'}
+                        }, new ArrayList<Character>(Arrays.asList('a', 'd', 'c')), 0, 1, 0, 0, false)
         );
     }
 }

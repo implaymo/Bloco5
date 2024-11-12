@@ -41,7 +41,8 @@ class Exercicio3_3Test {
                         new int[][]{ {9, 8, 7}, {6, 5, 4}, {3, 2, 1} },  // Matrix B
                         new int[][]{ {30, 24, 18}, {84, 69, 54}, {138, 114, 90} }  // Expected Result
                 ),
-                Arguments.of(new int[][]{{}, {2, 6}}, new int[][]{{0, 2}, {0, 2}}, new int[][]{{-1}, {-1}})
+                Arguments.of(new int[][]{{}, {2, 6}}, new int[][]{{0, 2}, {0, 2}}, new int[][]{{-1}, {-1}}),
+                Arguments.of(new int[][]{{1,1}, {2, 6}}, new int[][]{{}, {}}, new int[][]{{-1}, {-1}})
         );
     }
 }
