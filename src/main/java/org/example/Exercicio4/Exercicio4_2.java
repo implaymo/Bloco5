@@ -81,27 +81,27 @@ public class Exercicio4_2 {
         return false;
     }
 
-//    public static boolean isWordDiagonalTopRight(char[][] boardGame, ArrayList<Character> wordToFind) {
-//        for (int row = boardGame.length; row > 0; row--) {
-//            for(int column = boardGame[0].length; column > 0; column--) {
-//                if(isWordMatchDiagonalTopLeftStart(boardGame, wordToFind, row, column)) {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public static boolean isWordDiagonalBottomRight(char[][] boardGame, ArrayList<Character> wordToFind) {
-//        for (int row = boardGame.length; row > 0; row--) {
-//            for(int column = boardGame[0].length; column > 0; column--) {
-//                if(isWordMatchDiagonalTopLeftStart(boardGame, wordToFind, row, column)) {
-//                    return true;
-//                }
-//            }
-//        }
-//        return false;
-//    }
+    public static boolean isWordDiagonalTopRight(char[][] boardGame, ArrayList<Character> wordToFind) {
+        for (int row = 0; row < boardGame.length; row++) {
+            for(int column = boardGame[0].length - 1; column > 0; column--) {
+                if(isWordMatchDiagonalTopRightStart(boardGame, wordToFind, row, column)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean isWordDiagonalBottomRight(char[][] boardGame, ArrayList<Character> wordToFind) {
+        for (int row = boardGame.length - 1; row > 0; row--) {
+            for(int column = boardGame[0].length - 1; column > 0; column--) {
+                if(isWordMatchDiagonalBottomRightStart(boardGame, wordToFind, row, column)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 
     // Check Match Words in every direction
@@ -176,36 +176,36 @@ public class Exercicio4_2 {
         return false;
     }
 
-//    public static boolean isWordMatchDiagonalTopRightStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
-//        if (row - wordToFind.size() <= boardGame.length && column + wordToFind.size() <= boardGame[0].length) {
-//            boolean match = true;
-//            for (int i = 0; i < wordToFind.size(); i++) {
-//                if (boardGame[row - i][column - i] != wordToFind.get(i)) {
-//                    match = false;
-//                    break;
-//                }
-//            }
-//            if (match) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//    public static boolean isWordMatchDiagonalBottomRightStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
-//        if (row - wordToFind.size() <= boardGame.length && column + wordToFind.size() <= boardGame[0].length) {
-//            boolean match = true;
-//            for (int i = 0; i < wordToFind.size(); i++) {
-//                if (boardGame[row - i][column - i] != wordToFind.get(i)) {
-//                    match = false;
-//                    break;
-//                }
-//            }
-//            if (match) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
+    public static boolean isWordMatchDiagonalTopRightStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+        if (row + wordToFind.size() <= boardGame.length && column - wordToFind.size() >= -1) {
+            boolean match = true;
+            for (int i = 0; i < wordToFind.size(); i++) {
+                if (boardGame[row + i][column - i] != wordToFind.get(i)) {
+                    match = false;
+                    break;
+                }
+            }
+            if (match) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean isWordMatchDiagonalBottomRightStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+        if (row - wordToFind.size() >= -1 && column - wordToFind.size() >= -1) {
+            boolean match = true;
+            for (int i = 0; i < wordToFind.size(); i++) {
+                if (boardGame[row - i][column - i] != wordToFind.get(i)) {
+                    match = false;
+                    break;
+                }
+            }
+            if (match) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
