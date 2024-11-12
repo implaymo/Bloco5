@@ -5,7 +5,10 @@ import java.util.ArrayList;
 public class Exercicio4_2 {
 
     public static boolean wordSearchGame(char[][] boardGame, ArrayList<Character> wordToFind){
-        if (isWordVertical(boardGame, wordToFind)){
+        if (isWordVertical(boardGame, wordToFind) || isWordVerticalReversed(boardGame, wordToFind) ||
+                isWordHorizontal(boardGame, wordToFind) || isWordHorizontalReversed(boardGame, wordToFind) ||
+                isWordDiagonalTopLeft(boardGame, wordToFind) || isWordDiagonalTopRight(boardGame, wordToFind) ||
+                isWordDiagonalBottomLeft(boardGame, wordToFind) || isWordDiagonalBottomRight(boardGame, wordToFind)){
             return true;
         } else{
             return false;
@@ -208,4 +211,3 @@ public class Exercicio4_2 {
         return false;
     }
 }
-

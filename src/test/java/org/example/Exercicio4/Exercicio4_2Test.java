@@ -19,6 +19,29 @@ class Exercicio4_2Test {
     }
 
     @ParameterizedTest
+    @MethodSource("arrayProvider0")
+    void should_return_correct_answers_if_Word_In_Board_Game(char[][] boardGame, ArrayList<Character> wordToFind, boolean expected) {
+        //arrange
+        //act
+        boolean result = Exercicio4_2.wordSearchGame(boardGame, wordToFind);
+        //assert
+        assertEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider0() {
+        return Stream.of(
+                Arguments.of(
+                        new char[][]{{'X', 'X', 'X'}, {'C', 'A', 'T'}, {'X', 'X', 'X'}},
+                        new ArrayList<>(Arrays.asList('C', 'A', 'T')),
+                        true
+                )
+        );
+    }
+
+
+
+    @ParameterizedTest
     @MethodSource("arrayProvider1")
     void should_return_correct_answers_if_Word_Horizontal(char[][] boardGame, ArrayList<Character> wordToFind, boolean expected) {
         //arrange
