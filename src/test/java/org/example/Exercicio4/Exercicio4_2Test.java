@@ -124,10 +124,10 @@ class Exercicio4_2Test {
     }
     @ParameterizedTest
     @MethodSource("arrayProvider5")
-    void should_return_correct_answers_if_Word_Diagonal(char[][] boardGame, ArrayList<Character> wordToFind, boolean expected) {
+    void should_return_correct_answers_if_Word_Diagonal_Top_Left(char[][] boardGame, ArrayList<Character> wordToFind, boolean expected) {
         //arrange
         //act
-        boolean result = Exercicio4_2.isWordDiagonal(boardGame, wordToFind);
+        boolean result = Exercicio4_2.isWordDiagonalTopLeft(boardGame, wordToFind);
         //assert
         assertEquals(expected, result);
     }
@@ -141,7 +141,43 @@ class Exercicio4_2Test {
                         true
                 ),
                 Arguments.of(
+                        new char[][]{{'X', 'X', 'X'}, {'C', 'X', 'X'}, {'X', 'A', 'X'}, {'X', 'X', 'T'}},
+                        new ArrayList<>(Arrays.asList('C', 'A', 'T')),
+                        true
+                ),
+                Arguments.of(
                         new char[][]{{'C', 'X'}, {'X', 'A'}, {'X', 'X'}},
+                        new ArrayList<>(Arrays.asList('C', 'A')),
+                        true
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider6")
+    void should_return_correct_answers_if_Word_Diagonal_Bottom_Left(char[][] boardGame, ArrayList<Character> wordToFind, boolean expected) {
+        //arrange
+        //act
+        boolean result = Exercicio4_2.isWordDiagonalBottomLeft(boardGame, wordToFind);
+        //assert
+        assertEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider6() {
+        return Stream.of(
+                Arguments.of(
+                        new char[][]{{'X', 'X', 'T'}, {'X', 'A', 'X'}, {'C', 'X', 'X'}},
+                        new ArrayList<>(Arrays.asList('C', 'A', 'T')),
+                        true
+                ),
+//                Arguments.of(
+//                        new char[][]{{'X', 'X', 'X'}, {'C', 'X', 'X'}, {'X', 'A', 'X'}, {'X', 'X', 'T'}},
+//                        new ArrayList<>(Arrays.asList('C', 'A', 'T')),
+//                        true
+//                ),
+                Arguments.of(
+                        new char[][]{{'X', 'X'}, {'X', 'A'}, {'C', 'X'}},
                         new ArrayList<>(Arrays.asList('C', 'A')),
                         true
                 )

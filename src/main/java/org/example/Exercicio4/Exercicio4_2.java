@@ -59,7 +59,7 @@ public class Exercicio4_2 {
         return false;
     }
 
-    public static boolean isWordDiagonal(char[][] boardGame, ArrayList<Character> wordToFind) {
+    public static boolean isWordDiagonalTopLeft(char[][] boardGame, ArrayList<Character> wordToFind) {
         for (int row = 0; row < boardGame.length; row++) {
             for(int column = 0; column < boardGame[0].length; column++) {
                 if(isWordMatchDiagonalTopLeftStart(boardGame, wordToFind, row, column)) {
@@ -69,6 +69,39 @@ public class Exercicio4_2 {
         }
         return false;
     }
+
+    public static boolean isWordDiagonalBottomLeft(char[][] boardGame, ArrayList<Character> wordToFind) {
+        for (int row = boardGame.length -1 ; row > 0; row--) {
+            for(int column = 0; column < boardGame[0].length; column++) {
+                if(isWordMatchDiagonalBottomLeftStart(boardGame, wordToFind, row, column)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+//    public static boolean isWordDiagonalTopRight(char[][] boardGame, ArrayList<Character> wordToFind) {
+//        for (int row = boardGame.length; row > 0; row--) {
+//            for(int column = boardGame[0].length; column > 0; column--) {
+//                if(isWordMatchDiagonalTopLeftStart(boardGame, wordToFind, row, column)) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
+//
+//    public static boolean isWordDiagonalBottomRight(char[][] boardGame, ArrayList<Character> wordToFind) {
+//        for (int row = boardGame.length; row > 0; row--) {
+//            for(int column = boardGame[0].length; column > 0; column--) {
+//                if(isWordMatchDiagonalTopLeftStart(boardGame, wordToFind, row, column)) {
+//                    return true;
+//                }
+//            }
+//        }
+//        return false;
+//    }
 
 
     // Check Match Words in every direction
@@ -127,11 +160,11 @@ public class Exercicio4_2 {
         return false;
     }
 
-    public static boolean isWordMatchDiagonalDownLeftStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
-        if (row + wordToFind.size() <= boardGame.length && column + wordToFind.size() <= boardGame[0].length) {
+    public static boolean isWordMatchDiagonalBottomLeftStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+        if (row - wordToFind.size() >= -1 && column + wordToFind.size() <= boardGame[0].length) {
             boolean match = true;
             for (int i = 0; i < wordToFind.size(); i++) {
-                if (boardGame[row + i][column + i] != wordToFind.get(i)) {
+                if (boardGame[row - i][column + i] != wordToFind.get(i)) {
                     match = false;
                     break;
                 }
@@ -142,5 +175,37 @@ public class Exercicio4_2 {
         }
         return false;
     }
+
+//    public static boolean isWordMatchDiagonalTopRightStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+//        if (row - wordToFind.size() <= boardGame.length && column + wordToFind.size() <= boardGame[0].length) {
+//            boolean match = true;
+//            for (int i = 0; i < wordToFind.size(); i++) {
+//                if (boardGame[row - i][column - i] != wordToFind.get(i)) {
+//                    match = false;
+//                    break;
+//                }
+//            }
+//            if (match) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+//
+//    public static boolean isWordMatchDiagonalBottomRightStart(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column) {
+//        if (row - wordToFind.size() <= boardGame.length && column + wordToFind.size() <= boardGame[0].length) {
+//            boolean match = true;
+//            for (int i = 0; i < wordToFind.size(); i++) {
+//                if (boardGame[row - i][column - i] != wordToFind.get(i)) {
+//                    match = false;
+//                    break;
+//                }
+//            }
+//            if (match) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 }
 
