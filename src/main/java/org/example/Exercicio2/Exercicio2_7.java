@@ -10,23 +10,23 @@ public class Exercicio2_7 {
             return new int[]{-1};
         }
 
-        int[] principalDiagonalNumbers = new int[array[0].length];
-        if(Exercicio1_1.isMatrixSquare(array) || Exercicio1_2.isMatrixRectangle(array)){
-            int index = 0;
-            for (int i = 0; i < array[0].length; i++){
-                principalDiagonalNumbers[index] = getNumberBelongsPrincipalDiagonal(array[i], index);
-                index++;
+        int[] principalDiagonalNumbers = new int[array.length];
+
+        if(Exercicio1_1.isMatrixSquare(array)){
+            for (int i = 0; i < array.length; i++){
+                principalDiagonalNumbers[i] = getPrincipalDiagonalNumber(array[i], i);
             }
-            return principalDiagonalNumbers;
         }
-        return new int[]{-1};
+        else {
+            return new int[]{-1};
+        }
+
+        return principalDiagonalNumbers;
     }
 
-    public static int getNumberBelongsPrincipalDiagonal(int[]array, int index){
+    public static int getPrincipalDiagonalNumber(int[]array, int index){
         int number = 0;
-        for (int i = 0; i < array.length; i++) {
-            number = array[index];
-        }
+        number = array[index];
         return number;
     }
 
