@@ -42,8 +42,20 @@ public class Exercicio4_2 {
     public static boolean isWordVertical(char[][] boardGame, ArrayList<Character> wordToFind) {
         ArrayList<Character> word = new ArrayList<>();
         for (int column = 0; column < boardGame[0].length; column++) {
-            for (int row = 0; row < boardGame.length; row++) {
+            for (int row = 0; row <= boardGame.length - wordToFind.size(); row++) {
                 if(isWordMatchVertical(boardGame, wordToFind, row, column)){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public static boolean isWordVerticalReversed(char[][] boardGame, ArrayList<Character> wordToFind) {
+        ArrayList<Character> word = new ArrayList<>();
+        for (int column = 0; column < boardGame[0].length; column++) {
+            for (int row = boardGame.length - 1; row >= wordToFind.size() - 1; row--) {
+                if(isWordMatchVerticalReversed(boardGame, wordToFind, row, column)){
                     return true;
                 }
             }
@@ -76,6 +88,15 @@ public class Exercicio4_2 {
     public static boolean isWordMatchVertical(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
         for (int i = 0; i < wordToFind.size(); i++) {
             if (boardGame[row + i][column] != wordToFind.get(i)){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isWordMatchVerticalReversed(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
+        for (int i = 0; i < wordToFind.size(); i++) {
+            if (boardGame[row - i][column] != wordToFind.get(i)){
                 return false;
             }
         }

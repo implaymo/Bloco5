@@ -32,12 +32,12 @@ class Exercicio4_2Test {
     private static Stream<Arguments> arrayProvider1() {
         return Stream.of(
                 Arguments.of(
-                        new char[][]{{'X', 'A'}, {'C', 'A'}, {'T', 'G'}},
+                        new char[][]{{'X', 'X'}, {'C', 'A'}, {'X', 'X'}},
                         new ArrayList<>(Arrays.asList('C', 'A')),
                         true
                 ),
                 Arguments.of(
-                        new char[][]{{'X', 'A', 'C'}, {'C', 'A', 'T'}, {'T', 'G', 'X'}},
+                        new char[][]{{'X', 'X', 'X'}, {'C', 'A', 'T'}, {'X', 'X', 'X'}},
                         new ArrayList<>(Arrays.asList('C', 'A', 'T')),
                         true
                 )
@@ -58,12 +58,12 @@ class Exercicio4_2Test {
     private static Stream<Arguments> arrayProvider2() {
         return Stream.of(
                 Arguments.of(
-                        new char[][]{{'X', 'A', 'C'}, {'T', 'Z', 'C'}, {'T', 'A', 'C'}},
+                        new char[][]{{'X', 'X', 'X'}, {'X', 'X', 'X'}, {'T', 'A', 'C'}},
                         new ArrayList<>(Arrays.asList('C', 'A', 'T')),
                         true
                 ),
                 Arguments.of(
-                        new char[][]{{'X', 'A'}, {'A', 'W'}, {'A', 'C'}},
+                        new char[][]{{'X', 'X'}, {'X', 'X'}, {'A', 'C'}},
                         new ArrayList<>(Arrays.asList('C', 'A')),
                         true
                 )
@@ -84,12 +84,38 @@ class Exercicio4_2Test {
     private static Stream<Arguments> arrayProvider3() {
         return Stream.of(
                 Arguments.of(
-                        new char[][]{{'C', 'C', 'C'}, {'A', 'A', 'C'}, {'B', 'T', 'X'}},
+                        new char[][]{{'X', 'X', 'C'}, {'X', 'X', 'A'}, {'X', 'X', 'T'}},
                         new ArrayList<>(Arrays.asList('C', 'A', 'T')),
                         true
                 ),
                 Arguments.of(
-                        new char[][]{{'C', 'S'}, {'C', 'T'}, {'A', 'G'}},
+                        new char[][]{{'X', 'X'}, {'C', 'X'}, {'A', 'X'}},
+                        new ArrayList<>(Arrays.asList('C', 'A')),
+                        true
+                )
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider4")
+    void should_return_correct_answers_if_Word_Vertical_Reversed(char[][] boardGame, ArrayList<Character> wordToFind, boolean expected) {
+        //arrange
+        //act
+        boolean result = Exercicio4_2.isWordVerticalReversed(boardGame, wordToFind);
+        //assert
+        assertEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider4() {
+        return Stream.of(
+                Arguments.of(
+                        new char[][]{{'T', 'X', 'X'}, {'A', 'X', 'X'}, {'C', 'X', 'X'}},
+                        new ArrayList<>(Arrays.asList('C', 'A', 'T')),
+                        true
+                ),
+                Arguments.of(
+                        new char[][]{{'X', 'X'}, {'X', 'A'}, {'X', 'C'}},
                         new ArrayList<>(Arrays.asList('C', 'A')),
                         true
                 )
