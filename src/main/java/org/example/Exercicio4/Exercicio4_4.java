@@ -9,8 +9,8 @@ public class Exercicio4_4 {
 
     public static boolean findWordProvided(char[][] boardGame, ArrayList<Character> wordOne, ArrayList<Character> wordTwo) {
 
-        ArrayList<int[]> positionsWordOne = new ArrayList<>();
-        ArrayList<int[]> positionsWordTwo = new ArrayList<>();
+        ArrayList<int[]> positionsWordOne;
+        ArrayList<int[]> positionsWordTwo;
 
         positionsWordOne = checkPositionWord(boardGame, wordOne);
         positionsWordTwo = checkPositionWord(boardGame, wordTwo);
