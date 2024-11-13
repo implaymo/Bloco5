@@ -12,42 +12,8 @@ public class Exercicio4_4 {
         ArrayList<int[]> positionsWordOne = new ArrayList<>();
         ArrayList<int[]> positionsWordTwo = new ArrayList<>();
 
-        if(!isWordHorizontal(boardGame, wordTwo).isEmpty()){
-            positionsWordTwo.addAll(isWordHorizontal(boardGame, wordTwo));
-        } else if (!isWordHorizontalReversed(boardGame, wordTwo).isEmpty()){
-            positionsWordTwo.addAll(isWordHorizontalReversed(boardGame, wordTwo));
-        } else if (!isWordVertical(boardGame, wordTwo).isEmpty()){
-            positionsWordTwo.addAll(isWordVertical(boardGame, wordTwo));
-        } else if (!isWordVerticalReversed(boardGame, wordTwo).isEmpty()){
-            positionsWordTwo.addAll(isWordVerticalReversed(boardGame, wordTwo));
-        } else if (!isWordDiagonalTopLeft(boardGame, wordTwo).isEmpty()){
-            positionsWordTwo.addAll(isWordDiagonalTopLeft(boardGame, wordTwo));
-        } else if (!isWordDiagonalBottomLeft(boardGame, wordTwo).isEmpty()){
-            positionsWordTwo.addAll(isWordDiagonalBottomLeft(boardGame, wordTwo));
-        } else if (!isWordDiagonalTopRight(boardGame, wordTwo).isEmpty()){
-            positionsWordTwo.addAll(isWordDiagonalTopRight(boardGame, wordTwo));
-        } else if (!isWordDiagonalBottomRight(boardGame, wordTwo).isEmpty()){
-            positionsWordTwo.addAll(isWordDiagonalBottomRight(boardGame, wordTwo));
-        }
-
-        if(!isWordHorizontal(boardGame, wordOne).isEmpty()){
-            positionsWordOne.addAll(isWordHorizontal(boardGame, wordOne));
-        } else if (!isWordHorizontalReversed(boardGame, wordOne).isEmpty()){
-            positionsWordOne.addAll(isWordHorizontalReversed(boardGame, wordOne));
-        } else if (!isWordVertical(boardGame, wordOne).isEmpty()){
-            positionsWordOne.addAll(isWordVertical(boardGame, wordOne));
-        } else if (!isWordVerticalReversed(boardGame, wordOne).isEmpty()){
-            positionsWordOne.addAll(isWordVerticalReversed(boardGame, wordOne));
-        } else if (!isWordDiagonalTopLeft(boardGame, wordOne).isEmpty()){
-            positionsWordOne.addAll(isWordDiagonalTopLeft(boardGame, wordOne));
-        } else if (!isWordDiagonalBottomLeft(boardGame, wordOne).isEmpty()){
-            positionsWordOne.addAll(isWordDiagonalBottomLeft(boardGame, wordOne));
-        } else if (!isWordDiagonalTopRight(boardGame, wordOne).isEmpty()){
-            positionsWordOne.addAll(isWordDiagonalTopRight(boardGame, wordOne));
-        } else if (!isWordDiagonalBottomRight(boardGame, wordOne).isEmpty()){
-            positionsWordOne.addAll(isWordDiagonalBottomRight(boardGame, wordOne));
-        }
-
+        positionsWordOne = checkPositionWord(boardGame, wordOne);
+        positionsWordTwo = checkPositionWord(boardGame, wordTwo);
 
         if(checkIfPositionsMatch(positionsWordOne, positionsWordTwo)){
             return true;
@@ -55,6 +21,28 @@ public class Exercicio4_4 {
             return false;
         }
 
+    }
+
+    public static ArrayList<int[]> checkPositionWord(char[][]board, ArrayList<Character> word) {
+        ArrayList<int[]> positions = new ArrayList<>();
+        if(!isWordHorizontal(board, word).isEmpty()){
+            positions.addAll(isWordHorizontal(board, word));
+        } else if (!isWordHorizontalReversed(board, word).isEmpty()){
+            positions.addAll(isWordHorizontalReversed(board, word));
+        } else if (!isWordVertical(board, word).isEmpty()){
+            positions.addAll(isWordVertical(board, word));
+        } else if (!isWordVerticalReversed(board, word).isEmpty()){
+            positions.addAll(isWordVerticalReversed(board, word));
+        } else if (!isWordDiagonalTopLeft(board, word).isEmpty()){
+            positions.addAll(isWordDiagonalTopLeft(board, word));
+        } else if (!isWordDiagonalBottomLeft(board, word).isEmpty()){
+            positions.addAll(isWordDiagonalBottomLeft(board, word));
+        } else if (!isWordDiagonalTopRight(board, word).isEmpty()){
+            positions.addAll(isWordDiagonalTopRight(board, word));
+        } else if (!isWordDiagonalBottomRight(board, word).isEmpty()){
+            positions.addAll(isWordDiagonalBottomRight(board, word));
+        }
+        return positions;
     }
 
 
