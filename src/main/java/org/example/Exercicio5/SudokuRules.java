@@ -2,9 +2,9 @@ package org.example.Exercicio5;
 
 public class SudokuRules {
 
-    private int[][] boardGame;
-    private int boardGameTotalColumns;
-    private int boardGameTotalRows;
+    private final int[][] boardGame;
+    private final int boardGameTotalColumns;
+    private final int boardGameTotalRows;
 
     public SudokuRules(int[][] boardGame) {
         this.boardGame = boardGame;
@@ -50,5 +50,11 @@ public class SudokuRules {
             }
         }
         return false;
-        }
+    }
+
+    public boolean isNumberIn3x3Matrix(){
+        return true;
+    }
+
+
 }
