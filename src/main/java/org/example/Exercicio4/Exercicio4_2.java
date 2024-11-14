@@ -15,12 +15,10 @@ public class Exercicio4_2 {
         }
     }
 
-    // Directions
-
     public static boolean isWordHorizontal(char[][] boardGame, ArrayList<Character> wordToFind){
         for (int row = 0; row < boardGame.length; row++) {
             for (int column = 0; column <= boardGame[0].length - wordToFind.size(); column++) {
-                if(matchHorizontal(boardGame, wordToFind, row,column)){
+                if(matchHorizontal(boardGame, wordToFind, row, column)){
                     return true;
                 }
             }
@@ -106,8 +104,6 @@ public class Exercicio4_2 {
         return false;
     }
 
-
-    // Check Match Words in every direction
 
     public static boolean matchHorizontal(char[][] boardGame, ArrayList<Character> wordToFind, int row, int column){
         for (int i = 0; i < wordToFind.size(); i++) {
