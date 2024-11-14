@@ -1,8 +1,6 @@
 package org.example.Exercicio4;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.function.Supplier;
 
 
 public class Exercicio4_4 {
