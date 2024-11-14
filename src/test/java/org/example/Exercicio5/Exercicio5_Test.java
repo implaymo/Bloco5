@@ -264,4 +264,43 @@ class Exercicio5_Test {
                         )
                         )));
     }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider6")
+    void should_return_updated_board_game(int[][] boardGame, int[][] expected) {
+        //arrange
+        //act
+        int[][] result = Exercicio5.sudoku(boardGame);
+        //assert
+        assertArrayEquals(result,expected);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider6() {
+        return Stream.of(
+                Arguments.of(
+                        new int[][]{
+                                {0, 0, 0, 0, 7, 0, 0, 0, 0},
+                                {0, 7, 0, 0, 0, 0, 0, 0, 5},
+                                {0, 0, 0, 0, 1, 0, 0, 0, 0},
+                                {0, 0, 0, 0, 0, 0, 4, 0, 0},
+                                {0, 0, 6, 0, 0, 0, 0, 0, 1},
+                                {0, 0, 0, 9, 0, 0, 0, 0, 0},
+                                {0, 6, 0, 0, 0, 0, 0, 0, 4},
+                                {2, 0, 0, 0, 1, 0, 0, 0, 0},
+                                {0, 0, 5, 0, 0, 0, 0, 0, 0}
+                        },
+                        new int[][]{
+                                {1, 0, 0, 0, 7, 0, 0, 0, 0},
+                                {0, 7, 1, 0, 0, 0, 0, 0, 5},
+                                {0, 0, 0, 0, 1, 0, 0, 0, 0},
+                                {0, 0, 2, 0, 0, 0, 4, 0, 0},
+                                {0, 0, 6, 0, 0, 0, 0, 0, 1},
+                                {0, 0, 0, 9, 0, 0, 0, 0, 0},
+                                {0, 6, 0, 0, 0, 0, 0, 0, 4},
+                                {2, 0, 3, 0, 1, 0, 0, 0, 0},
+                                {0, 0, 5, 0, 0, 0, 0, 0, 0}
+                        })
+        );
+    }
 }

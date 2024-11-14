@@ -31,6 +31,8 @@ class Exercicio3_3Test {
         return Stream.of(
                 Arguments.of(new int[][]{{1, 2}, {3, 4}}, new int[][]{{5, 6}, {7, 8}},
                         new int[][]{{19, 22},{43,50}}),
+                Arguments.of(new int[][]{{1, 2}, {2, 1}}, new int[][]{{3, 2}, {2, 3}},
+                        new int[][]{{7, 8},{8,7}}),
                 Arguments.of(new int[][]{{-1, 2}, {3, -4}}, new int[][]{{5, -6}, {-7, 8}},
                         new int[][]{{-19, 22}, {43, -50}}),
                 Arguments.of(new int[][]{{2}, {-1}, {3}},

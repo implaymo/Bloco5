@@ -5,16 +5,9 @@ import java.util.Arrays;
 
 public class Exercicio5 {
 
-    public static ArrayList<int[]> sudoku(int[][]boardGame, int[][] updatedBoardGame) {
-        ArrayList<int[]> unavailablePositions = new ArrayList<>();
-        ArrayList<int[]> freePositions = new ArrayList<>();
-        ArrayList<int[]> playedPositions = new ArrayList<>();
-
-
-        unavailablePositions = occupiedPositions(boardGame);
-        freePositions = freePositions(boardGame);
-        playedPositions = playerPlayedPositions(updatedBoardGame, unavailablePositions);
-        return new ArrayList<>();
+    public static int[][] sudoku(int[][]boardGame) {
+        int[][] updatedBoardGame = playerAddNewNumber(boardGame, 0, 0, 1);
+        return updatedBoardGame;
     }
     
     public static ArrayList<int[]> occupiedPositions(int[][] boardGame) {
@@ -79,6 +72,17 @@ public class Exercicio5 {
                 if (boardGame[row][column] > 0 && boardGame[row][column] <= 9) {
                     boardGame[row][column] = 1;
                 }
+            }
+        }
+        return boardGame;
+    }
+
+    public static int[][] playerAddNewNumber(int[][] boardGame, int row, int column, int number){
+        int[] positionToAdd = new int[]{row,column};
+        ArrayList<int[]> freeLocations = freePositions(boardGame);
+        for (int i = 0; i < freeLocations.size(); i++) {
+            if(Arrays.equals(freeLocations.get(i), positionToAdd)) {
+                boardGame[row][column] = number;
             }
         }
         return boardGame;
