@@ -14,8 +14,11 @@ public class Exercicio5 {
         unavailablePositions = occupiedPositions(boardGame);
         freePositions = freePositions(boardGame);
         playedPositions = playerPlayedPositions(updatedBoardGame, unavailablePositions);
-
-        return true;
+        if(checkIfBoardAsFreeSpaces(updatedBoardGame)){
+            return true;
+        } else{
+            return false;
+        }
     }
     
     public static ArrayList<int[]> occupiedPositions(int[][] boardGame) {
@@ -63,6 +66,13 @@ public class Exercicio5 {
             if(Arrays.equals(unavailablePositions.get(i), positionToCheck)) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    public static boolean checkIfBoardAsFreeSpaces(int[][] updatedBoardGame) {
+        if(freePositions(updatedBoardGame).isEmpty()) {
+            return false;
         }
         return true;
     }
