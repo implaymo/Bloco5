@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 public class Exercicio5 {
 
-    public static boolean sudoku(int[][]boardGame, int[][] updatedBoardGame) {
+    public static ArrayList<int[]> sudoku(int[][]boardGame, int[][] updatedBoardGame) {
         ArrayList<int[]> unavailablePositions = new ArrayList<>();
         ArrayList<int[]> freePositions = new ArrayList<>();
         ArrayList<int[]> playedPositions = new ArrayList<>();
@@ -14,11 +14,7 @@ public class Exercicio5 {
         unavailablePositions = occupiedPositions(boardGame);
         freePositions = freePositions(boardGame);
         playedPositions = playerPlayedPositions(updatedBoardGame, unavailablePositions);
-        if(checkIfBoardAsFreeSpaces(updatedBoardGame)){
-            return true;
-        } else{
-            return false;
-        }
+        return new ArrayList<>();
     }
     
     public static ArrayList<int[]> occupiedPositions(int[][] boardGame) {
@@ -63,7 +59,7 @@ public class Exercicio5 {
     public static boolean checkIfPlayerPlayed(ArrayList<int[]> unavailablePositions, int row, int column) {
         int[] positionToCheck = new int[]{row, column};
         for (int i = 0; i < unavailablePositions.size(); i++) {
-            if(Arrays.equals(unavailablePositions.get(i), positionToCheck)) {
+            if (Arrays.equals(unavailablePositions.get(i), positionToCheck)) {
                 return false;
             }
         }
@@ -76,4 +72,16 @@ public class Exercicio5 {
         }
         return true;
     }
+
+    public static int[][] maskMatrix(int[][] boardGame) {
+        for (int row = 0; row < 9; row++) {
+            for (int column = 0; column < 9; column++) {
+                if (boardGame[row][column] > 0 && boardGame[row][column] <= 9) {
+                    boardGame[row][column] = 1;
+                }
+            }
+        }
+        return boardGame;
+    }
+
 }
