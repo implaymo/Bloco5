@@ -6,8 +6,14 @@ import java.util.Arrays;
 public class Exercicio5 {
 
     public static int[][] sudoku(int[][]boardGame) {
-        int[][] updatedBoardGame = playerAddNewNumber(boardGame, 0, 0, 1);
-        return updatedBoardGame;
+        SudokuRules sudokuRules = new SudokuRules(boardGame);
+
+        if (!sudokuRules.isNumberInRow(3, 0)
+                || !sudokuRules.isNumberInColumn(3, 0) || !sudokuRules.isNumberIn3x3Matrix(3,0,0)) {
+            int[][] updatedBoardGame = playerAddNewNumber(boardGame, 0,0, 3);
+            return updatedBoardGame;
+        }
+        return boardGame;
     }
     
     public static ArrayList<int[]> occupiedPositions(int[][] boardGame) {
