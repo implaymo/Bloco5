@@ -33,8 +33,17 @@ public class SudokuRules {
         return false;
     }
 
-    public boolean isNumberIn3x3Matrix(){
-        return true;
+    public boolean isNumberIn3x3Matrix(int number, int rowToPlay, int columnToPlay) {
+        int startRow = (rowToPlay / 3) * 3;
+        int startColumn = (columnToPlay / 3) * 3;
+        for (int row = startRow; row < startRow + 3; row++) {
+            for (int column = startColumn; column < startColumn + 3; column++) {
+                if (boardGame[row][column] == number) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 
