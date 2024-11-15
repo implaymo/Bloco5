@@ -5,12 +5,12 @@ import java.util.Arrays;
 
 public class Exercicio5 {
 
-    public static int[][] sudoku(int[][]boardGame) {
+    public static int[][] sudoku(int[][]boardGame, int rowToPlay, int columnToPlay, int numberToPlay) {
         SudokuRules sudokuRules = new SudokuRules(boardGame);
 
-        if (!sudokuRules.isNumberInRow(3, 0)
-                || !sudokuRules.isNumberInColumn(3, 0) || !sudokuRules.isNumberIn3x3Matrix(3,0,0)) {
-            int[][] updatedBoardGame = playerAddNewNumber(boardGame, 0,0, 3);
+        if (!sudokuRules.isNumberInRow(numberToPlay, rowToPlay)
+                || !sudokuRules.isNumberInColumn(numberToPlay, columnToPlay) || !sudokuRules.isNumberIn3x3Matrix(numberToPlay,rowToPlay,columnToPlay)) {
+            int[][] updatedBoardGame = playerAddNewNumber(boardGame, rowToPlay,columnToPlay, numberToPlay);
             return updatedBoardGame;
         }
         return boardGame;
