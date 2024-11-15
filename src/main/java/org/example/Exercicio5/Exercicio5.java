@@ -5,18 +5,16 @@ import java.util.Arrays;
 
 public class Exercicio5 {
 
-    public static int[][] sudoku(int[][]boardGame, int rowToPlay, int columnToPlay, int numberToPlay) {
-        SudokuRules sudokuRules = new SudokuRules(boardGame);
+    public static int[][] sudoku(int[][]boardGame) {
+        SudokuBoardValidation sudokuBoardValidation = new SudokuBoardValidation(boardGame);
 
-        if (!sudokuRules.isNumberInRow(numberToPlay, rowToPlay)
-                || !sudokuRules.isNumberInColumn(numberToPlay, columnToPlay) || !sudokuRules.isNumberIn3x3Matrix(numberToPlay,rowToPlay,columnToPlay)) {
-            int[][] updatedBoardGame = playerAddNewNumber(boardGame, rowToPlay,columnToPlay, numberToPlay);
-            return updatedBoardGame;
+        if(getFreePositions(boardGame).isEmpty() && sudokuBoardValidation.isBoardValid(boardGame)) {
+            return boardGame;
         }
         return boardGame;
     }
     
-    public static ArrayList<int[]> occupiedPositions(int[][] boardGame) {
+    public static ArrayList<int[]> getOccupiedPositions(int[][] boardGame) {
         ArrayList<int[]> unavailablePositions = new ArrayList<>();
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
@@ -29,7 +27,7 @@ public class Exercicio5 {
         return unavailablePositions;
     }
 
-    public static ArrayList<int[]> freePositions(int[][] boardGame) {
+    public static ArrayList<int[]> getFreePositions(int[][] boardGame) {
         ArrayList<int[]> availablePositions = new ArrayList<>();
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
@@ -41,21 +39,21 @@ public class Exercicio5 {
         return availablePositions;
     }
 
-    public static ArrayList<int[]> playerPlayedPositions(int[][] updatedBoardGame, ArrayList<int[]> unavailablePositions) {
-        ArrayList<int[]> playerPlayedPositions = new ArrayList<>();
+    public static ArrayList<int[]> getPlayerPlayedPositions(int[][] updatedBoardGame, ArrayList<int[]> unavailablePositions) {
+        ArrayList<int[]> playerMoves = new ArrayList<>();
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
                 if (updatedBoardGame[row][column] > 0 && updatedBoardGame[row][column] < 9) {
-                     if(checkIfPlayerPlayed(unavailablePositions, row, column)){
-                         playerPlayedPositions.add(new int[]{row, column});
+                     if(isPlayerMove(unavailablePositions, row, column)){
+                         playerMoves.add(new int[]{row, column});
                      }
                 }
             }
         }
-        return playerPlayedPositions;
+        return playerMoves;
     }
 
-    public static boolean checkIfPlayerPlayed(ArrayList<int[]> unavailablePositions, int row, int column) {
+    public static boolean isPlayerMove(ArrayList<int[]> unavailablePositions, int row, int column) {
         int[] positionToCheck = new int[]{row, column};
         for (int i = 0; i < unavailablePositions.size(); i++) {
             if (Arrays.equals(unavailablePositions.get(i), positionToCheck)) {
@@ -65,14 +63,11 @@ public class Exercicio5 {
         return true;
     }
 
-    public static boolean checkIfBoardAsFreeSpaces(int[][] updatedBoardGame) {
-        if(freePositions(updatedBoardGame).isEmpty()) {
-            return false;
-        }
-        return true;
+    public static boolean hasFreeSpaces(int[][] updatedBoardGame) {
+        return !getFreePositions(updatedBoardGame).isEmpty();
     }
 
-    public static int[][] maskMatrix(int[][] boardGame) {
+    public static int[][] maskBoard(int[][] boardGame) {
         for (int row = 0; row < 9; row++) {
             for (int column = 0; column < 9; column++) {
                 if (boardGame[row][column] > 0 && boardGame[row][column] <= 9) {
@@ -83,9 +78,9 @@ public class Exercicio5 {
         return boardGame;
     }
 
-    public static int[][] playerAddNewNumber(int[][] boardGame, int row, int column, int number){
+    public static int[][] addNumberToBoard(int[][] boardGame, int row, int column, int number){
         int[] positionToAdd = new int[]{row,column};
-        ArrayList<int[]> freeLocations = freePositions(boardGame);
+        ArrayList<int[]> freeLocations = getFreePositions(boardGame);
         for (int i = 0; i < freeLocations.size(); i++) {
             if(Arrays.equals(freeLocations.get(i), positionToAdd)) {
                 boardGame[row][column] = number;

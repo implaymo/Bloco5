@@ -23,7 +23,7 @@ class Exercicio5_Test {
     void should_return_true_if_still_free_spaces_on_board_game(int[][] updatedBoardGame, boolean expected) {
         //arrange
         //act
-        boolean result = Exercicio5.checkIfBoardAsFreeSpaces(updatedBoardGame);
+        boolean result = Exercicio5.hasFreeSpaces(updatedBoardGame);
         //assert
         assertEquals(expected, result);
     }
@@ -64,9 +64,9 @@ class Exercicio5_Test {
     @MethodSource("arrayProvider1")
     void should_return_true_if_player_played(int[][] boardGame, int[][] updatedBoardGame, int row, int column, boolean expected) {
         //arrange
-        ArrayList<int[]> notAvailablePositions = Exercicio5.occupiedPositions(boardGame);
+        ArrayList<int[]> notAvailablePositions = Exercicio5.getOccupiedPositions(boardGame);
         //act
-        boolean result = Exercicio5.checkIfPlayerPlayed(notAvailablePositions, row, column);
+        boolean result = Exercicio5.isPlayerMove(notAvailablePositions, row, column);
         //assert
         assertEquals(expected, result);
     }
@@ -106,7 +106,7 @@ class Exercicio5_Test {
     void should_return_mask_matrix(int[][] boardGame, int[][] expected) {
         //arrange
         //act
-        int[][] result = Exercicio5.maskMatrix(boardGame);
+        int[][] result = Exercicio5.maskBoard(boardGame);
         //assert
         assertArrayEquals(expected, result);
     }
@@ -144,7 +144,7 @@ class Exercicio5_Test {
     void should_return_all_locations_of_unavailable_locations(int[][] boardGame, ArrayList<int[]> expected) {
         //arrange
         //act
-        ArrayList<int[]> result = Exercicio5.occupiedPositions(boardGame);
+        ArrayList<int[]> result = Exercicio5.getOccupiedPositions(boardGame);
         //assert
         for (int i = 0; i < expected.size(); i++) {
             assertTrue(Arrays.equals(expected.get(i), result.get(i)));
@@ -190,7 +190,7 @@ class Exercicio5_Test {
     void should_return_all_location_free_spaces(int[][] boardGame, ArrayList<int[]> expected) {
         //arrange
         //act
-        ArrayList<int[]> result = Exercicio5.freePositions(boardGame);
+        ArrayList<int[]> result = Exercicio5.getFreePositions(boardGame);
         //assert
         for (int i = 0; i < expected.size(); i++) {
             assertTrue(Arrays.equals(expected.get(i), result.get(i)));
@@ -223,9 +223,9 @@ class Exercicio5_Test {
     @MethodSource("arrayProvider5")
     void should_return_all_location_player_player_spaces(int[][] boardGame, int[][] updatedBoardGame,ArrayList<int[]> expected) {
         //arrange
-        ArrayList<int[]> notAvailablePositions = Exercicio5.occupiedPositions(boardGame);
+        ArrayList<int[]> notAvailablePositions = Exercicio5.getOccupiedPositions(boardGame);
         //act
-        ArrayList<int[]> result = Exercicio5.playerPlayedPositions(updatedBoardGame, notAvailablePositions);
+        ArrayList<int[]> result = Exercicio5.getPlayerPlayedPositions(updatedBoardGame, notAvailablePositions);
         //assert
         for (int i = 0; i < expected.size(); i++) {
             assertTrue(Arrays.equals(expected.get(i), result.get(i)));
@@ -267,10 +267,10 @@ class Exercicio5_Test {
 
     @ParameterizedTest
     @MethodSource("arrayProvider6")
-    void should_return_updated_board_game(int[][] boardGame, int rowToPlay, int columnToPlay, int numberToPlay,int[][] expected) {
+    void should_return_updated_board_game(int[][] boardGame, int rowPlayed, int columnPlayed, int numberPlayed, int[][] expected) {
         //arrange
         //act
-        int[][] result = Exercicio5.sudoku(boardGame, rowToPlay, columnToPlay, numberToPlay);
+        int[][] result = Exercicio5.addNumberToBoard(boardGame, rowPlayed, columnPlayed, numberPlayed);
         //assert
         assertArrayEquals(result,expected);
     }
@@ -313,6 +313,67 @@ class Exercicio5_Test {
                                 {2, 8, 7, 4, 1, 9, 6, 3, 5},
                                 {3, 4, 5, 2, 8, 6, 1, 7, 9}
                         }, 4, 4, 5,
+                        new int[][]{
+                                {5, 3, 4, 6, 7, 8, 9, 1, 2},
+                                {6, 7, 2, 1, 9, 5, 3, 4, 8},
+                                {1, 9, 8, 3, 4, 2, 5, 6, 7},
+                                {8, 5, 9, 7, 6, 1, 4, 2, 3},
+                                {4, 2, 6, 8, 5, 3, 7, 9, 1},
+                                {7, 1, 3, 9, 2, 4, 8, 5, 6},
+                                {9, 6, 1, 5, 3, 7, 2, 8, 4},
+                                {2, 8, 7, 4, 1, 9, 6, 3, 5},
+                                {3, 4, 5, 2, 8, 6, 1, 7, 9}
+                        }),
+                Arguments.of(
+                        new int[][]{
+                                {0, 3, 4, 6, 7, 8, 9, 1, 2},
+                                {6, 7, 2, 1, 9, 5, 3, 4, 8},
+                                {1, 9, 8, 3, 4, 2, 5, 6, 7},
+                                {8, 5, 9, 7, 6, 1, 4, 2, 3},
+                                {4, 2, 6, 8, 5, 3, 7, 9, 1},
+                                {7, 1, 3, 9, 2, 4, 8, 5, 6},
+                                {9, 6, 1, 5, 3, 7, 2, 8, 4},
+                                {2, 8, 7, 4, 1, 9, 6, 3, 5},
+                                {3, 4, 5, 2, 8, 6, 1, 7, 9}
+                        }, 0, 0, 9,
+                        new int[][]{
+                                {9, 3, 4, 6, 7, 8, 9, 1, 2},
+                                {6, 7, 2, 1, 9, 5, 3, 4, 8},
+                                {1, 9, 8, 3, 4, 2, 5, 6, 7},
+                                {8, 5, 9, 7, 6, 1, 4, 2, 3},
+                                {4, 2, 6, 8, 5, 3, 7, 9, 1},
+                                {7, 1, 3, 9, 2, 4, 8, 5, 6},
+                                {9, 6, 1, 5, 3, 7, 2, 8, 4},
+                                {2, 8, 7, 4, 1, 9, 6, 3, 5},
+                                {3, 4, 5, 2, 8, 6, 1, 7, 9}
+                        })
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider7")
+    void should_return_valid_finished_board(int[][] boardGame, int[][] expected) {
+        //arrange
+        //act
+        int[][] result = Exercicio5.sudoku(boardGame);
+        //assert
+        assertArrayEquals(result,expected);
+    }
+
+    private static Stream<Arguments> arrayProvider7() {
+        return Stream.of(
+                Arguments.of(
+                        new int[][]{
+                                {5, 3, 4, 6, 7, 8, 9, 1, 2},
+                                {6, 7, 2, 1, 9, 5, 3, 4, 8},
+                                {1, 9, 8, 3, 4, 2, 5, 6, 7},
+                                {8, 5, 9, 7, 6, 1, 4, 2, 3},
+                                {4, 2, 6, 8, 5, 3, 7, 9, 1},
+                                {7, 1, 3, 9, 2, 4, 8, 5, 6},
+                                {9, 6, 1, 5, 3, 7, 2, 8, 4},
+                                {2, 8, 7, 4, 1, 9, 6, 3, 5},
+                                {3, 4, 5, 2, 8, 6, 1, 7, 9}
+                        },
                         new int[][]{
                                 {5, 3, 4, 6, 7, 8, 9, 1, 2},
                                 {6, 7, 2, 1, 9, 5, 3, 4, 8},
