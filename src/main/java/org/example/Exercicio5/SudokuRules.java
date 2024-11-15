@@ -12,19 +12,9 @@ public class SudokuRules {
         this.boardGameTotalRows = boardGame.length;
     }
 
-    public boolean isNumberPossibleToPlayInRow(int numberToCheckIfCanBePlayed, int rowToPlay, int columnToPlay){
-        int boardGameTotalRows = boardGame.length;
-        for (int row = 0; row < boardGameTotalRows; row++){
-            if(!isNumberInRow(row, numberToCheckIfCanBePlayed)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isNumberInRow(int row, int number){
+    public boolean isNumberInRow(int number, int rowToPlay){
         for (int column = 0; column < boardGameTotalColumns; column++) {
-            int numberInRow = boardGame[row][column];
+            int numberInRow = boardGame[rowToPlay][column];
             if (numberInRow == number) {
                 return true;
             }
@@ -33,18 +23,9 @@ public class SudokuRules {
     }
 
 
-    public boolean isNumberPossibleToPlayInColumn(int numberToCheckIfCanBePlayed, int rowToPlay, int columnToPlay){
-        for (int column = 0; column < boardGameTotalColumns; column++) {
-            if(!isNumberInColumn(column, numberToCheckIfCanBePlayed)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isNumberInColumn(int column, int number){
+    public boolean isNumberInColumn(int number, int columnToPlay){
         for (int row = 0; row < boardGameTotalRows; row++){
-            int numberInColumn = boardGame[row][column];
+            int numberInColumn = boardGame[row][columnToPlay];
             if (numberInColumn == number) {
                 return true;
             }
