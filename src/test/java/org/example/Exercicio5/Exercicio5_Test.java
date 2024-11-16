@@ -387,4 +387,46 @@ class Exercicio5_Test {
                         })
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider8")
+    void should_return_if_board_is_Valid(int[][] boardGame, boolean expected) {
+        // arrange
+        SudokuBoardValidation validator = new SudokuBoardValidation(boardGame);
+        // act
+        boolean result = validator.isBoardValid(boardGame);
+        // assert
+        assertEquals(expected, result);
+    }
+
+    private static Stream<Arguments> arrayProvider8() {
+        return Stream.of(
+                Arguments.of(
+                        new int[][]{
+                                {5, 3, 4, 6, 7, 8, 9, 1, 2},
+                                {6, 7, 2, 1, 9, 5, 3, 4, 8},
+                                {1, 9, 8, 3, 4, 2, 5, 6, 7},
+                                {8, 5, 9, 7, 6, 1, 4, 2, 3},
+                                {4, 2, 6, 8, 5, 3, 7, 9, 1},
+                                {7, 1, 3, 9, 2, 4, 8, 5, 6},
+                                {9, 6, 1, 5, 3, 7, 2, 8, 4},
+                                {2, 8, 7, 4, 1, 9, 6, 3, 5},
+                                {3, 4, 5, 2, 8, 6, 1, 7, 9}
+                        }, true
+                ),
+                Arguments.of(
+                        new int[][]{
+                                {5, 3, 4, 5, 7, 8, 9, 1, 2},
+                                {6, 7, 2, 1, 9, 5, 3, 4, 8},
+                                {1, 9, 8, 3, 4, 2, 5, 6, 7},
+                                {8, 5, 9, 7, 6, 1, 4, 2, 3},
+                                {4, 2, 6, 8, 5, 3, 7, 9, 1},
+                                {7, 1, 3, 9, 2, 4, 8, 5, 6},
+                                {9, 6, 1, 5, 3, 7, 2, 8, 4},
+                                {2, 8, 7, 4, 1, 9, 6, 3, 5},
+                                {3, 4, 5, 2, 8, 6, 1, 7, 9}
+                        }, false
+                )
+        );
+    }
 }

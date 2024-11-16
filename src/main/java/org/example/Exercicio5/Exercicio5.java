@@ -8,7 +8,7 @@ public class Exercicio5 {
     public static int[][] sudoku(int[][]boardGame) {
         SudokuBoardValidation sudokuBoardValidation = new SudokuBoardValidation(boardGame);
 
-        if(getFreePositions(boardGame).isEmpty() && sudokuBoardValidation.isBoardValid(boardGame)) {
+        if(!hasFreeSpaces(boardGame) && sudokuBoardValidation.isBoardValid(boardGame)) {
             return boardGame;
         }
         return boardGame;

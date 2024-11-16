@@ -26,9 +26,13 @@ public class SudokuBoardValidation {
     public boolean isRowValid(int[][] boardGame, int row) {
         for (int column = 0; column < boardGameTotalColumns; column++) {
             int numberInBoard = boardGame[row][column];
-            if (numberInBoard != 0 && sudokuRules.isNumberInRow(numberInBoard, row) || sudokuRules.isNumberInColumn(numberInBoard, column)
-                    || sudokuRules.isNumberIn3x3Matrix(numberInBoard, row, column)) {
-                return false;
+            int numberInBoardRow = row;
+            int numberInBoardColumn = column;
+            if(numberInBoard > 0) {
+                if (!sudokuRules.isNumberValidInRow(numberInBoard, row, numberInBoardColumn) || !sudokuRules.isNumberValidInColumn(numberInBoard, column, numberInBoardRow)
+                        || !sudokuRules.isNumberValidIn3x3Matrix(numberInBoard, row, column)) {
+                    return false;
+                }
             }
         }
         return true;
