@@ -7,11 +7,11 @@ public class Exercicio5 {
 
     public static int[][] sudoku(int[][]boardGame) {
         SudokuBoardValidation sudokuBoardValidation = new SudokuBoardValidation(boardGame);
-
+        int[][] updatedBoard = boardGame;
         if(!hasFreeSpaces(boardGame) && sudokuBoardValidation.isBoardValid(boardGame)) {
-            return boardGame;
+            updatedBoard = boardGame;
         }
-        return boardGame;
+        return updatedBoard;
     }
     
     public static ArrayList<int[]> getOccupiedPositions(int[][] boardGame) {

@@ -29,8 +29,9 @@ public class SudokuBoardValidation {
             int numberInBoardRow = row;
             int numberInBoardColumn = column;
             if(numberInBoard > 0) {
-                if (!sudokuRules.isNumberValidInRow(numberInBoard, row, numberInBoardColumn) || !sudokuRules.isNumberValidInColumn(numberInBoard, column, numberInBoardRow)
-                        || !sudokuRules.isNumberValidIn3x3Matrix(numberInBoard, row, column)) {
+                if (!sudokuRules.isNumberValidInRow(numberInBoard, row, numberInBoardColumn) ||
+                    !sudokuRules.isNumberValidInColumn(numberInBoard, column, numberInBoardRow) ||
+                    !sudokuRules.isNumberValidIn3x3Matrix(numberInBoard, row, column)) {
                     return false;
                 }
             }

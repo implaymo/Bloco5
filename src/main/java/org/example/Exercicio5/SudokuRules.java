@@ -44,10 +44,11 @@ public class SudokuRules {
         int startColumn = (columnRow / 3) * 3;
         for (int row = startRow; row < startRow + 3; row++) {
             for (int column = startColumn; column < startColumn + 3; column++) {
+                int numberInMatrix = boardGame[row][column];
                 if(row == numberRow && column == columnRow) {
                     continue;
                 }
-                if (boardGame[row][column] == number) {
+                if (numberInMatrix == number) {
                     return false;
                 }
             }
