@@ -1,5 +1,6 @@
 package org.example.Exercicio6;
 
+import org.example.Exercicio2.Exercicio2_2;
 import org.example.Exercicio2.Exercicio2_3;
 import org.example.Exercicio2.Exercicio2_5;
 
@@ -15,13 +16,6 @@ public class VectorExercise6 {
         this._array = array;
     }
 
-
-    public boolean isArrayEmpty() {
-        if (_array.length == 0) {
-            return true;
-        }
-        return false;
-    }
 
     public boolean addValue(int value) {
 
@@ -47,6 +41,9 @@ public class VectorExercise6 {
     }
 
     public int getValue(int index) {
+        if(isArrayEmptyOrNull()){
+            return -1;
+        }
         return _array[index];
     }
 
@@ -56,13 +53,10 @@ public class VectorExercise6 {
     }
 
     public int getHighestNumber(){
-        int highestNumber = 0;
-        for (int i = 0; i < _array.length; i++) {
-            if (_array[i] > highestNumber) {
-                highestNumber = _array[i];
-            }
+        if(isArrayEmptyOrNull()){
+            return -1;
         }
-        return highestNumber;
+        return Exercicio2_2.getHighestValue(_array);
     }
 
     public int getLowestNumber() {
@@ -77,7 +71,7 @@ public class VectorExercise6 {
 
 
     public double getAverage() {
-        if (isArrayEmpty()) {
+        if (isArrayEmptyOrNull()) {
             return -1;
         }
         double average;
@@ -88,7 +82,7 @@ public class VectorExercise6 {
     }
 
     public double getAverageEvenNumbers(){
-        if (isArrayEmpty()) {
+        if (isArrayEmptyOrNull()) {
             return -1;
         }
         double average;
@@ -105,7 +99,7 @@ public class VectorExercise6 {
     }
 
     public double getAverageOddNumbers(){
-        if (isArrayEmpty()) {
+        if (isArrayEmptyOrNull()) {
             return -1;
         }
         double average;
@@ -122,7 +116,7 @@ public class VectorExercise6 {
     }
 
     public double getAverageOfMultiplesOfGivenNumber(int number) {
-        if (isArrayEmpty()) {
+        if (isArrayEmptyOrNull()) {
             return -1;
         }
         double average;
@@ -139,7 +133,7 @@ public class VectorExercise6 {
     }
 
     public int[] sortArray(int direction) {
-        if (isArrayEmpty()) {
+        if (isArrayEmptyOrNull()) {
             return new int[]{-1};
         }
         for (int i = 0; i < _array.length; i++) {
@@ -181,5 +175,64 @@ public class VectorExercise6 {
             }
         }
     }
+
+    public boolean isArrayEmptyOrNull() {
+        if (_array == null) {
+            return true;
+        }
+        else if (_array.length == 0) {
+            return true;
+
+        }
+        return false;
+    }
+
+    public boolean hasOnlyOneValue() {
+        if (_array.length == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean hasOnlyEvenValues() {
+        for (int i = 0; i < _array.length; i++) {
+            if (_array[i] % 2 != 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean hasOnlyOddValues() {
+        for (int i = 0; i < _array.length; i++) {
+            if (_array[i] % 2 == 0){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean hasDuplicatedValues(){
+        if(isArrayEmptyOrNull()) {
+            return false;
+        }
+        for (int i = 0; i < _array.length; i++) {
+            for (int j = 0; j < _array.length; j++) {
+                if (i == j) {
+                    continue;
+                }
+
+                if (_array[i] == _array[j]) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int[] elementsThatDigitsIsBiggerThanTheAverage(){
+        return new int[]{};
+    }
+
 
 }
