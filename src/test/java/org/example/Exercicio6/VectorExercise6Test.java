@@ -8,53 +8,59 @@ import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class VectorExercise6Test {
 
     @Test
-    void test_constructor() {
+    void test_constructor1() {
         new VectorExercise6();
+    }
+
+    @Test
+    void test_constructor2() {
+        // arrange
+        int[] array = new int[]{1, 2};
+        new VectorExercise6(array);
     }
 
     @ParameterizedTest
     @MethodSource("arrayProvider0")
-    void should_return_array_with_the_add_value(int value, int[] initialArray, int[] expected) {
+    void should_return_array_with_the_add_value(int value, int[] initialArray) {
         //arrange
         VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
         //act
-        int[] result = vectorExercise6.addValue(value);
+        boolean result = vectorExercise6.addValue(value);
         //assert
-        assertArrayEquals(expected, result);
+        assertTrue(result);
     }
 
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider0() {
         return Stream.of(
-                Arguments.of(4, new int[]{1,2,3}, new int[]{1, 2, 3, 4}),
-                Arguments.of(0, new int[]{1,2,3},new int[]{1, 2, 3, 0}),
-                Arguments.of(-1, new int[]{1,2,3}, new int[]{1, 2, 3, -1})
+                Arguments.of(4, new int[]{1,2,3}),
+                Arguments.of(0, new int[]{1,2,3}),
+                Arguments.of(-1, new int[]{1,2,3})
         );
     }
 
     @ParameterizedTest
     @MethodSource("arrayProvider1")
-    void should_return_array_with_first_value_removed(int[] initialArray, int[] expected) {
+    void should_return_array_with_first_value_removed(int[] initialArray) {
         //arrange
         VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
         //act
-        int[] result = vectorExercise6.removeFirstValue();
+        boolean result = vectorExercise6.removeFirstValue();
         //assert
-        assertArrayEquals(expected, result);
+        assertTrue(result);
     }
 
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider1() {
         return Stream.of(
-                Arguments.of(new int[]{1,2,3}, new int[]{2, 3}),
-                Arguments.of(new int[]{0,2,3}, new int[]{2, 3}),
-                Arguments.of(new int[]{-1,2,3}, new int[]{2, 3})
+                Arguments.of(new int[]{1,2,3}),
+                Arguments.of(new int[]{0,2,3}),
+                Arguments.of(new int[]{-1,2,3})
         );
     }
 
@@ -220,4 +226,30 @@ class VectorExercise6Test {
                 Arguments.of(new int[]{0, 1, 2, 3, 4, 5}, 3, 1.5)
         );
     }
+
+
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider10")
+    void should_return_sorted_array(int[] initialArray, int direction, int[] expected) {
+        //arrange
+        VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
+        //act
+        int[] result = vectorExercise6.sortArray(direction);
+        //assert
+        assertArrayEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider10() {
+        return Stream.of(
+                Arguments.of(new int[]{3, 2, 1, 4}, 0,new int[]{1, 2, 3, 4}),
+                Arguments.of(new int[]{}, 0,new int[]{-1}),
+                Arguments.of(new int[]{}, 1,new int[]{-1}),
+                Arguments.of(new int[]{0, 2, 5, 4, 3, 1}, 0, new int[]{0, 1, 2, 3, 4, 5}),
+                Arguments.of(new int[]{3, 2, 1, 4}, 1,new int[]{4, 3, 2, 1}),
+                Arguments.of(new int[]{0, 2, 5, 4, 3, 1}, 1, new int[]{5, 4, 3, 2, 1, 0})
+        );
+    }
+
 }

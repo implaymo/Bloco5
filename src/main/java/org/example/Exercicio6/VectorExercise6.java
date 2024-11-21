@@ -1,62 +1,65 @@
 package org.example.Exercicio6;
 
-import org.example.Exercicio2.Exercicio2_1;
 import org.example.Exercicio2.Exercicio2_3;
 import org.example.Exercicio2.Exercicio2_5;
 
 public class VectorExercise6 {
 
-    private int[] array;
+    private int[] _array;
 
     public VectorExercise6() {
-        this.array = new int[]{};
+        _array = new int[0];
     }
 
     public VectorExercise6(int[] array) {
-        this.array = array;
+        this._array = array;
     }
 
 
     public boolean isArrayEmpty() {
-        if (array.length == 0) {
+        if (_array.length == 0) {
             return true;
         }
         return false;
     }
 
-    public int[] addValue(int value) {
-        int[] newArray = new int[array.length + 1];
-        for (int i = 0; i < array.length; i++) {
-            newArray[i] = array[i];
+    public boolean addValue(int value) {
+
+        int[] newArray = new int[_array.length + 1];
+        for (int i = 0; i < _array.length; i++) {
+            newArray[i] = _array[i];
         }
-        newArray[array.length] = value;
-        array = newArray;
-        return array;
+
+        newArray[_array.length] = value;
+        _array = newArray;
+
+        return true;
     }
 
-    public int[] removeFirstValue() {
-        int[] newArray = new int[array.length - 1];
-        for (int i = 0; i < array.length - 1; i++) {
-            newArray[i] = array[i + 1];
+    public boolean removeFirstValue() {
+        int[] newArray = new int[_array.length - 1];
+        for (int i = 0; i < _array.length - 1; i++) {
+            newArray[i] = _array[i + 1];
         }
-        array = newArray;
-        return array;
+        _array = newArray;
+
+        return true;
     }
 
     public int getValue(int index) {
-        return array[index];
+        return _array[index];
     }
 
 
     public int getTotalElements() {
-        return Exercicio2_5.getTotalElementsInArray(array);
+        return Exercicio2_5.getTotalElementsInArray(_array);
     }
 
     public int getHighestNumber(){
         int highestNumber = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] > highestNumber) {
-                highestNumber = array[i];
+        for (int i = 0; i < _array.length; i++) {
+            if (_array[i] > highestNumber) {
+                highestNumber = _array[i];
             }
         }
         return highestNumber;
@@ -64,9 +67,9 @@ public class VectorExercise6 {
 
     public int getLowestNumber() {
         int lowestNumber = getHighestNumber();
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < lowestNumber) {
-                lowestNumber = array[i];
+        for (int i = 0; i < _array.length; i++) {
+            if (_array[i] < lowestNumber) {
+                lowestNumber = _array[i];
             }
         }
         return lowestNumber;
@@ -79,7 +82,7 @@ public class VectorExercise6 {
         }
         double average;
         int count = getTotalElements();
-        int sum = Exercicio2_3.sumLineNumbers(array);
+        int sum = Exercicio2_3.sumLineNumbers(_array);
         average = (double) sum / count;
         return average;
     }
@@ -91,9 +94,9 @@ public class VectorExercise6 {
         double average;
         int countEvenNumbers = 0;
         int sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] % 2 == 0) {
-                sum+= array[i];
+        for (int i = 0; i < _array.length; i++) {
+            if (_array[i] % 2 == 0) {
+                sum+= _array[i];
                 countEvenNumbers++;
             }
         }
@@ -108,9 +111,9 @@ public class VectorExercise6 {
         double average;
         int countEvenNumbers = 0;
         int sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] % 2 != 0) {
-                sum+= array[i];
+        for (int i = 0; i < _array.length; i++) {
+            if (_array[i] % 2 != 0) {
+                sum+= _array[i];
                 countEvenNumbers++;
             }
         }
@@ -125,13 +128,58 @@ public class VectorExercise6 {
         double average;
         int countMultipleNumbers = 0;
         int sum = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] % number == 0) {
-                sum+= array[i];
+        for (int i = 0; i < _array.length; i++) {
+            if (_array[i] % number == 0) {
+                sum+= _array[i];
                 countMultipleNumbers++;
             }
         }
         average = (double) sum / countMultipleNumbers;
         return average;
     }
+
+    public int[] sortArray(int direction) {
+        if (isArrayEmpty()) {
+            return new int[]{-1};
+        }
+        for (int i = 0; i < _array.length; i++) {
+            if(direction == 0) {
+                sortAscending(i);
+            } else if (direction == 1) {
+                sortDescending(i);
+            }
+
+        }
+
+        return _array;
+    }
+
+    public void sortAscending(int row) {
+        int temp;
+        for (int j = 0; j <_array.length; j++) {
+            if (row == j) {
+                continue;
+            }
+            if (_array[row] < _array[j]) {
+                temp = _array[row];
+                _array[row] = _array[j];
+                _array[j] = temp;
+            }
+        }
+    }
+
+    public void sortDescending(int row) {
+        int temp;
+        for (int j = 0; j <_array.length; j++) {
+            if (row == j) {
+                continue;
+            }
+            if (_array[row] > _array[j]) {
+                temp = _array[row];
+                _array[row] = _array[j];
+                _array[j] = temp;
+            }
+        }
+    }
+
 }
