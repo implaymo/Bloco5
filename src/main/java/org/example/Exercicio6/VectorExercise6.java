@@ -231,7 +231,46 @@ public class VectorExercise6 {
     }
 
     public int[] elementsThatDigitsIsBiggerThanTheAverage(){
-        return new int[]{};
+        if (isArrayEmptyOrNull()) {
+            return new int[]{-1};
+        }
+        double average = 0;
+        int totalDigits = 0;
+        int sizeArray = _array.length;
+        for (int i = 0; i < sizeArray; i++) {
+            totalDigits += countNumberDigits(_array[i]);
+        }
+        average = (double) totalDigits / sizeArray;
+
+        return isNumberOfDigitsBiggerThanAverageOfDigits(average);
+    }
+
+    public int countNumberDigits(int number) {
+        String numberAsString = Integer.toString(number);
+        int count = 0;
+        for (int i = 0; i < numberAsString.length(); i++) {
+            count++;
+        }
+        return count;
+    }
+
+    public int[] isNumberOfDigitsBiggerThanAverageOfDigits(double average) {
+        int numbersDigitsBiggerThanAverage = 0;
+        for (int i = 0; i < _array.length; i++) {
+            if(countNumberDigits(_array[i]) > average) {
+                numbersDigitsBiggerThanAverage++;
+            }
+        }
+
+        int[] finalArray = new int[numbersDigitsBiggerThanAverage];
+        int index = 0;
+        for (int j = 0; j < _array.length; j++) {
+            if(countNumberDigits(_array[j]) > average) {
+                finalArray[index] = _array[j];
+                index++;
+            }
+        }
+        return finalArray;
     }
 
 

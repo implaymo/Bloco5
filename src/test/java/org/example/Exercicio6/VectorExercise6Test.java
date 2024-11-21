@@ -380,26 +380,23 @@ class VectorExercise6Test {
 
     @ParameterizedTest
     @MethodSource("arrayProvider16")
-    void should_return_elements_that_total_digits_is_bigger_than_the_average_of_digits(int[] initialArray, boolean expected) {
+    void should_return_elements_that_total_digits_is_bigger_than_the_average_number_of_digits(int[] initialArray, int[] expected) {
         //arrange
         VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
         //act
-        boolean result = vectorExercise6.hasDuplicatedValues();
+        int[] result = vectorExercise6.elementsThatDigitsIsBiggerThanTheAverage();
         //assert
-        assertEquals(expected, result);
+        assertArrayEquals(expected, result);
     }
 
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider16() {
         return Stream.of(
-                Arguments.of(new int[]{1 ,2}, false),
-                Arguments.of(new int[]{1}, false),
-                Arguments.of(new int[]{}, false),
-                Arguments.of(null, false),
-                Arguments.of(new int[]{0, 2}, false),
-                Arguments.of(new int[]{1, 1, 3}, true),
-                Arguments.of(new int[]{-1, -1, 3}, true),
-                Arguments.of(new int[]{-1, 1, 3}, false)
+                Arguments.of(new int[]{1 ,222, 33}, new int[]{222}),
+                Arguments.of(new int[]{1 ,1, 1, 1, 1, 1}, new int[]{}),
+                Arguments.of(new int[]{1 ,22, 33, 44, 55}, new int[]{22, 33, 44, 55}),
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[]{}, new int[]{-1})
         );
     }
 
