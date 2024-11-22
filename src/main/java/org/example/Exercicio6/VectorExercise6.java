@@ -323,15 +323,19 @@ public class VectorExercise6 {
         int totalDigits = 0;
         int totalEvenDigits = 0;
         double percentage;
-        while (number > 0) {
-            int lastDigit = number % 10;
-            if (lastDigit % 2 == 0) {
-                totalEvenDigits++;
-            }
+        if (number == 0) {
+            totalEvenDigits++;
             totalDigits++;
-            number = number / 10;
+        } else{
+            while (number > 0) {
+                int lastDigit = number % 10;
+                if (lastDigit % 2 == 0) {
+                    totalEvenDigits++;
+                }
+                totalDigits++;
+                number = number / 10;
+            }
         }
-
         percentage =  ((double) totalEvenDigits / totalDigits) * 100;
         return percentage;
     }
@@ -368,9 +372,13 @@ public class VectorExercise6 {
     public int getTotalOfDigitsInElement(int number){
         number = Math.abs(number);
         int totalDigitsInElement = 0;
-        while (number > 0) {
+        if (number == 0) {
             totalDigitsInElement++;
-            number = number / 10;
+        } else {
+            while (number > 0) {
+                totalDigitsInElement++;
+                number = number / 10;
+            }
         }
         return totalDigitsInElement;
     }
