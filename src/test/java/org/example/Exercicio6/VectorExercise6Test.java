@@ -384,7 +384,7 @@ class VectorExercise6Test {
         //arrange
         VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
         //act
-        int[] result = vectorExercise6.elementsThatDigitsIsBiggerThanTheAverage();
+        int[] result = vectorExercise6.getElementsThatDigitsIsBiggerThanTheAverage();
         //assert
         assertArrayEquals(expected, result);
     }
@@ -400,5 +400,28 @@ class VectorExercise6Test {
         );
     }
 
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider17")
+    void should_return_elements_that_have_more_even_digits_percentage_that_the_average_percentage_of_even_digits_of_all_elements(int[] initialArray, int[] expected) {
+        //arrange
+        VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
+        //act
+        int[] result = vectorExercise6.getElementsThatHaveMoreEvenDigitsPercentageThanTheAverage();
+        //assert
+        assertArrayEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider17() {
+        return Stream.of(
+                Arguments.of(new int[]{248, 135, 860}, new int[]{248, 860}),
+                Arguments.of(new int[]{-248, 135, 860}, new int[]{-248, 860}),
+                Arguments.of(new int[]{1 ,0, 1}, new int[]{0}),
+                Arguments.of(new int[]{1 ,1, 1}, new int[]{}),
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[]{}, new int[]{-1})
+        );
+    }
 
 }

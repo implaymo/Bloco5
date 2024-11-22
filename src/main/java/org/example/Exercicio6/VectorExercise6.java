@@ -230,7 +230,7 @@ public class VectorExercise6 {
         return false;
     }
 
-    public int[] elementsThatDigitsIsBiggerThanTheAverage(){
+    public int[] getElementsThatDigitsIsBiggerThanTheAverage(){
         if (isArrayEmptyOrNull()) {
             return new int[]{-1};
         }
@@ -261,7 +261,6 @@ public class VectorExercise6 {
                 numbersDigitsBiggerThanAverage++;
             }
         }
-
         int[] finalArray = new int[numbersDigitsBiggerThanAverage];
         int index = 0;
         for (int j = 0; j < _array.length; j++) {
@@ -273,5 +272,116 @@ public class VectorExercise6 {
         return finalArray;
     }
 
+    ////////////////////// EXERCISE 20 /////////////////////////////7
 
+    public int[] getElementsThatHaveMoreEvenDigitsPercentageThanTheAverage(){
+        if(isArrayEmptyOrNull()){
+            return new int[]{-1};
+        }
+        double percentageEvenDigitsAllElements = getTotalPercentageOfEvenDigitsArray();
+        double percentageEvenDigitsInNumber = 0;
+        int totalNumbersPercentageEvenDigitsBiggerThanAllElementsPercentage = 0;
+
+        for (int i = 0; i < _array.length; i++) {
+            percentageEvenDigitsInNumber = getPercentageOfEvenDigitsInAnElement(_array[i]);
+            if (percentageEvenDigitsInNumber > percentageEvenDigitsAllElements) {
+                totalNumbersPercentageEvenDigitsBiggerThanAllElementsPercentage++;
+            }
+        }
+
+        int[] numbersEvenDigitsPercentageBigger = new int[totalNumbersPercentageEvenDigitsBiggerThanAllElementsPercentage];
+        int[] finalNumbers = addNumbersThatHaveBiggerPercentage(numbersEvenDigitsPercentageBigger,
+                percentageEvenDigitsAllElements);
+        return finalNumbers;
+    }
+
+    public int[] addNumbersThatHaveBiggerPercentage(int[] numbersEvenDigitsPercentageBigger,
+                                                    double percentageEvenDigitsAllElements){
+        double percentageEvenDigitsInNumber;
+        int index = 0;
+        for (int j = 0; j < _array.length; j++) {
+            percentageEvenDigitsInNumber = getPercentageOfEvenDigitsInAnElement(_array[j]);
+            if (percentageEvenDigitsInNumber > percentageEvenDigitsAllElements) {
+                numbersEvenDigitsPercentageBigger[index] = _array[j];
+                index++;
+            }
+        }
+        return numbersEvenDigitsPercentageBigger;
+    }
+
+    public double getTotalPercentageOfEvenDigitsArray() {
+        double percentage;
+        int totalEvenDigits = getTotalEvenDigitsArray();
+        int totalDigits = getTotalDigitsInArray();
+
+        percentage = ((double) totalEvenDigits / totalDigits) * 100;
+        return percentage;
+    }
+
+    public double getPercentageOfEvenDigitsInAnElement(int number){
+        number = Math.abs(number);
+        int totalDigits = 0;
+        int totalEvenDigits = 0;
+        double percentage;
+        while (number > 0) {
+            int lastDigit = number % 10;
+            if (lastDigit % 2 == 0) {
+                totalEvenDigits++;
+            }
+            totalDigits++;
+            number = number / 10;
+        }
+
+        percentage =  ((double) totalEvenDigits / totalDigits) * 100;
+        return percentage;
+    }
+
+    public int getTotalOfEvenDigitsElement(int number) {
+        number = Math.abs(number);
+        int totalEvenDigitsInElement = 0;
+        int lastDigit;
+        if(number == 0) {
+            totalEvenDigitsInElement++;
+            return totalEvenDigitsInElement;
+        } else {
+            while (number > 0) {
+                lastDigit = number % 10;
+                if (lastDigit % 2 == 0){
+                    totalEvenDigitsInElement++;
+                }
+                number = number / 10;
+            }
+
+        }
+        return totalEvenDigitsInElement;
+    }
+
+    public int getTotalEvenDigitsArray(){
+        int totalEvenDigits = 0;
+        for (int i = 0; i < _array.length; i++) {
+            totalEvenDigits += getTotalOfEvenDigitsElement(_array[i]);
+        }
+        return totalEvenDigits;
+    }
+
+
+    public int getTotalOfDigitsInElement(int number){
+        number = Math.abs(number);
+        int totalDigitsInElement = 0;
+        while (number > 0) {
+            totalDigitsInElement++;
+            number = number / 10;
+        }
+        return totalDigitsInElement;
+    }
+
+    public int getTotalDigitsInArray(){
+        int totalDigits = 0;
+        for (int i = 0; i < _array.length; i++) {
+            totalDigits += getTotalOfDigitsInElement(_array[i]);
+        }
+        return totalDigits;
+    }
+
+    ///////////////////////////////////////////////////////////////
 }
