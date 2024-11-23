@@ -447,4 +447,28 @@ class VectorExercise6Test {
                 Arguments.of(new int[]{}, new int[]{-1})
         );
     }
+
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider19")
+    void should_return_elements_with_ascending_digits(int[] initialArray, int[] expected) {
+        //arrange
+        VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
+        //act
+        int[] result = vectorExercise6.getElementsThatHaveAscendingDigitsOnly();
+        //assert
+        assertArrayEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider19() {
+        return Stream.of(
+                Arguments.of(new int[]{248, 135, 860}, new int[]{248, 135}),
+                Arguments.of(new int[]{-248, 135, 860}, new int[]{-248, 135}),
+                Arguments.of(new int[]{1 ,0, 1}, new int[]{1, 0 , 1}),
+                Arguments.of(new int[]{1 ,1, 1}, new int[]{1, 1, 1}),
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[]{}, new int[]{-1})
+        );
+    }
 }

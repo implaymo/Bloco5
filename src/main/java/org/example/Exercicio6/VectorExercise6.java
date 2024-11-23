@@ -438,4 +438,59 @@ public class VectorExercise6 {
         }
         return arrayElementsOnlyEvenDigits;
     }
+    ///////////////////////////////////////////////////////////////////
+
+    ////////////////////////// Exercise 22 //////////////////////////////
+
+    public int[] getElementsThatHaveAscendingDigitsOnly(){
+        if (isArrayEmptyOrNull()) {
+            return new int[]{-1};
+        }
+
+        int elementsAscendingDigits = 0;
+        for (int i = 0; i < _array.length; i++) {
+            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
+            if (hasAscendingDigits(allElementsDigits)) {
+                elementsAscendingDigits++;
+            }
+        }
+
+        int[] allElementsWithAscendingDigits = new int[elementsAscendingDigits];
+        int index = 0;
+        for (int j = 0; j <  _array.length; j++) {
+            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[j]), _array[j]);
+            if (hasAscendingDigits(allElementsDigits)) {
+                allElementsWithAscendingDigits[index] = _array[j];
+                index++;
+            }
+        }
+
+        return allElementsWithAscendingDigits;
+    }
+
+
+    public int[] getAllElementsDigits(int totalElementDigits, int number) {
+        int[] allElementDigits = new int[totalElementDigits];
+        int lastDigit;
+        int index = totalElementDigits - 1;
+        while (number > 0) {
+            lastDigit = number % 10;
+            allElementDigits[index] = lastDigit;
+            number = number / 10;
+            index--;
+        }
+
+        return allElementDigits;
+    }
+
+    public boolean hasAscendingDigits(int[] allELementDigits){
+        for (int i = 0; i < allELementDigits.length - 1; i++) {
+            if(allELementDigits[i] > allELementDigits[i + 1]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /////////////////////////////////////////////////////////////////
 }
