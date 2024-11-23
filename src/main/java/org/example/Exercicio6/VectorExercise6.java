@@ -4,10 +4,6 @@ import org.example.Exercicio2.Exercicio2_2;
 import org.example.Exercicio2.Exercicio2_3;
 import org.example.Exercicio2.Exercicio2_5;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-
 public class VectorExercise6 {
 
     private int[] _array;
@@ -53,6 +49,7 @@ public class VectorExercise6 {
 
 
     public int getTotalElements() {
+
         return Exercicio2_5.getTotalElementsInArray(_array);
     }
 
@@ -64,6 +61,9 @@ public class VectorExercise6 {
     }
 
     public int getLowestNumber() {
+        if(isArrayEmptyOrNull()) {
+            return -1;
+        }
         int lowestNumber = getHighestNumber();
         for (int i = 0; i < _array.length; i++) {
             if (_array[i] < lowestNumber) {
@@ -200,7 +200,8 @@ public class VectorExercise6 {
 
     public boolean hasOnlyEvenValues() {
         for (int i = 0; i < _array.length; i++) {
-            if (_array[i] % 2 != 0){
+            int number = _array[i];
+            if (number % 2 != 0){
                 return false;
             }
         }
@@ -209,7 +210,8 @@ public class VectorExercise6 {
 
     public boolean hasOnlyOddValues() {
         for (int i = 0; i < _array.length; i++) {
-            if (_array[i] % 2 == 0){
+            int number = _array[i];
+            if (number % 2 == 0){
                 return false;
             }
         }
@@ -242,7 +244,8 @@ public class VectorExercise6 {
         int totalDigits = 0;
         int sizeArray = _array.length;
         for (int i = 0; i < sizeArray; i++) {
-            totalDigits += countNumberDigits(_array[i]);
+            int number = _array[i];
+            totalDigits += countNumberDigits(number);
         }
         average = (double) totalDigits / sizeArray;
 
@@ -261,15 +264,17 @@ public class VectorExercise6 {
     public int[] isNumberOfDigitsBiggerThanAverageOfDigits(double average) {
         int numbersDigitsBiggerThanAverage = 0;
         for (int i = 0; i < _array.length; i++) {
-            if(countNumberDigits(_array[i]) > average) {
+            int number = _array[i];
+            if(countNumberDigits(number) > average) {
                 numbersDigitsBiggerThanAverage++;
             }
         }
         int[] finalArray = new int[numbersDigitsBiggerThanAverage];
         int index = 0;
         for (int j = 0; j < _array.length; j++) {
-            if(countNumberDigits(_array[j]) > average) {
-                finalArray[index] = _array[j];
+            int number = _array[j];
+            if(countNumberDigits(number) > average) {
+                finalArray[index] = number;
                 index++;
             }
         }
@@ -287,7 +292,8 @@ public class VectorExercise6 {
         int totalNumbersPercentageEvenDigitsBiggerThanAllElementsPercentage = 0;
 
         for (int i = 0; i < _array.length; i++) {
-            percentageEvenDigitsInNumber = getPercentageOfEvenDigitsInAnElement(_array[i]);
+            int number = _array[i];
+            percentageEvenDigitsInNumber = getPercentageOfEvenDigitsInAnElement(number);
             if (percentageEvenDigitsInNumber > percentageEvenDigitsAllElements) {
                 totalNumbersPercentageEvenDigitsBiggerThanAllElementsPercentage++;
             }
@@ -304,9 +310,10 @@ public class VectorExercise6 {
         double percentageEvenDigitsInNumber;
         int index = 0;
         for (int j = 0; j < _array.length; j++) {
-            percentageEvenDigitsInNumber = getPercentageOfEvenDigitsInAnElement(_array[j]);
+            int number = _array[j];
+            percentageEvenDigitsInNumber = getPercentageOfEvenDigitsInAnElement(number);
             if (percentageEvenDigitsInNumber > percentageEvenDigitsAllElements) {
-                numbersEvenDigitsPercentageBigger[index] = _array[j];
+                numbersEvenDigitsPercentageBigger[index] = number;
                 index++;
             }
         }
@@ -367,7 +374,8 @@ public class VectorExercise6 {
     public int getTotalEvenDigitsArray(){
         int totalEvenDigits = 0;
         for (int i = 0; i < _array.length; i++) {
-            totalEvenDigits += getTotalOfEvenDigitsElement(_array[i]);
+            int number = _array[i];
+            totalEvenDigits += getTotalOfEvenDigitsElement(number);
         }
         return totalEvenDigits;
     }
@@ -390,7 +398,8 @@ public class VectorExercise6 {
     public int getTotalDigitsInArray(){
         int totalDigits = 0;
         for (int i = 0; i < _array.length; i++) {
-            totalDigits += getTotalOfDigitsInElement(_array[i]);
+            int number = _array[i];
+            totalDigits += getTotalOfDigitsInElement(number);
         }
         return totalDigits;
     }
@@ -405,7 +414,8 @@ public class VectorExercise6 {
 
         int countElementsOnlyWithEvenDigits = 0;
         for (int i = 0; i < _array.length; i++) {
-            if(hasElementOnlyEvenDigits(_array[i])) {
+            int number = _array[i];
+            if(hasElementOnlyEvenDigits(number)) {
                 countElementsOnlyWithEvenDigits++;
             }
         }
@@ -434,8 +444,9 @@ public class VectorExercise6 {
     public int[] addElementsOnlyWithEvenDigits(int[] arrayElementsOnlyEvenDigits){
         int index = 0;
         for (int i = 0; i < _array.length; i++) {
-            if(hasElementOnlyEvenDigits(_array[i])) {
-                arrayElementsOnlyEvenDigits[index] = _array[i];
+            int number = _array[i];
+            if(hasElementOnlyEvenDigits(number)) {
+                arrayElementsOnlyEvenDigits[index] = number;
                 index++;
             }
 
@@ -453,9 +464,9 @@ public class VectorExercise6 {
 
         int elementsAscendingDigits = 0;
         for (int i = 0; i < _array.length; i++) {
-            int element = Math.abs(_array[i]);
-            int totalDigits = getTotalOfDigitsInElement(element);
-            if (hasAscendingDigits(getAllElementsDigits(totalDigits,element))) {
+            int number = Math.abs(_array[i]);
+            int totalDigits = getTotalOfDigitsInElement(number);
+            if (hasAscendingDigits(getElementDigits(totalDigits,number))) {
                 elementsAscendingDigits++;
             }
         }
@@ -466,7 +477,7 @@ public class VectorExercise6 {
     }
 
 
-    public int[] getAllElementsDigits(int totalElementDigits, int number) {
+    public int[] getElementDigits(int totalElementDigits, int number) {
         int[] allElementDigits = new int[totalElementDigits];
         int lastDigit;
         int index = totalElementDigits - 1;
@@ -492,9 +503,9 @@ public class VectorExercise6 {
     public int[] addElementsWithAscendingDigits(int[]allElementsWithAscendingDigits) {
         int index = 0;
         for (int j = 0; j < _array.length; j++) {
-            int element = Math.abs(_array[j]);
-            int totalDigits = getTotalOfDigitsInElement(element);
-            int [] allElementsDigits = getAllElementsDigits(totalDigits, element);
+            int number = Math.abs(_array[j]);
+            int totalDigits = getTotalOfDigitsInElement(number);
+            int [] allElementsDigits = getElementDigits(totalDigits, number);
             if (hasAscendingDigits(allElementsDigits)) {
                 allElementsWithAscendingDigits[index] = _array[j];
                 index++;
@@ -513,8 +524,9 @@ public class VectorExercise6 {
         }
         int totalOfPalindrome = 0;
         for (int i = 0; i < _array.length; i++) {
-            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
-            if (isElementPalindrome(allElementsDigits, _array[i])) {
+            int number = _array[i];
+            int [] allElementDigits = getElementDigits(getTotalOfDigitsInElement(number), number);
+            if (isElementPalindrome(allElementDigits, number)) {
                 totalOfPalindrome++;
             }
         }
@@ -539,9 +551,10 @@ public class VectorExercise6 {
         int index = 0;
         int[] allPalindromeElements = new int[totalOfPalindrome];
         for (int i = 0; i < _array.length; i++) {
-            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
-            if (isElementPalindrome(allElementsDigits, _array[i])) {
-                allPalindromeElements[index] = _array[i];
+            int number = _array[i];
+            int [] allElementsDigits = getElementDigits(getTotalOfDigitsInElement(number), number);
+            if (isElementPalindrome(allElementsDigits, number)) {
+                allPalindromeElements[index] = number;
                 index++;
             }
         }
@@ -558,10 +571,47 @@ public class VectorExercise6 {
             return new int[]{-1};
         }
 
-        return new int[]{-1};
+        int countElementsThatHaveTheSameDigits = 0;
+        for (int i = 0; i < _array.length; i++) {
+            int [] allElementDigits = getElementDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
+            if (hasAllDigitsEqual(allElementDigits)) {
+                countElementsThatHaveTheSameDigits++;
+            }
+        }
+
+
+        int[] elementsWithEqualDigits = new int[countElementsThatHaveTheSameDigits];
+
+
+        return addAllElementWithEqualDigits(elementsWithEqualDigits);
+    }
+
+    public boolean hasAllDigitsEqual(int[] elementDigits){
+        int firstDigit = elementDigits[0];
+        for (int i = 1; i < elementDigits.length; i++){
+            if (firstDigit != elementDigits[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public int[] addAllElementWithEqualDigits(int[] elementsWithEqualDigits){
+        int index = 0;
+        for (int i = 0; i < _array.length; i++) {
+            int [] allElementDigits = getElementDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
+            if (hasAllDigitsEqual(allElementDigits)) {
+                elementsWithEqualDigits[index] = _array[i];
+                index++;
+            }
+        }
+        return elementsWithEqualDigits;
     }
 
 
 
+
+
+    ///////////////////////////////////////////////////////////////77
 
 }

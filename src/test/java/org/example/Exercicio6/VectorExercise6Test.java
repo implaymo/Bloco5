@@ -143,7 +143,7 @@ class VectorExercise6Test {
     private static Stream<Arguments> arrayProvider5() {
         return Stream.of(
                 Arguments.of(new int[]{1,2,3}, 1),
-                Arguments.of(new int[]{}, 0),
+                Arguments.of(new int[]{}, -1),
                 Arguments.of(new int[]{0, 1, 2, 3, 4, 5}, 0),
                 Arguments.of(new int[]{0, -1, 2, 3, 4, 5}, -1)
 
@@ -488,8 +488,33 @@ class VectorExercise6Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider20() {
         return Stream.of(
-                Arguments.of(new int[]{121, 135, 860}, new int[]{}),
+                Arguments.of(new int[]{133, 135, 860}, new int[]{}),
                 Arguments.of(new int[]{-1771, 135, 860}, new int[]{-1771}),
+                Arguments.of(new int[]{1771, 135, 860}, new int[]{1771}),
+                Arguments.of(new int[]{1 ,0, 1}, new int[]{1, 0 , 1}),
+                Arguments.of(new int[]{1 ,1, 1}, new int[]{1, 1, 1}),
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[]{}, new int[]{-1})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider21")
+    void should_return_all_elements_with_the_same_digits(int[] initialArray, int[] expected) {
+        //arrange
+        VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
+        //act
+        int[] result = vectorExercise6.getAllElementsWithTheSameDigits();
+        //assert
+        assertArrayEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider21() {
+        return Stream.of(
+                Arguments.of(new int[]{133, 135, 860}, new int[]{}),
+                Arguments.of(new int[]{111, 135, 860}, new int[]{111}),
+                Arguments.of(new int[]{860, 135, -111}, new int[]{-111}),
                 Arguments.of(new int[]{1 ,0, 1}, new int[]{1, 0 , 1}),
                 Arguments.of(new int[]{1 ,1, 1}, new int[]{1, 1, 1}),
                 Arguments.of(null, new int[]{-1}),
