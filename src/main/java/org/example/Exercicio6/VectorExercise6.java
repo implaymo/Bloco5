@@ -662,4 +662,47 @@ public class VectorExercise6 {
         }
         return allNotArmstrongNumbers;
     }
+
+    ///////////////////////////////////////////////7
+
+
+    //////////////////////// Exercise 26 //////////////////////////////////
+
+
+    public int[] getAllElementsOfCertainSizeIfDigitsAreAscending(int requiredSize) {
+        if (isArrayEmptyOrNull()) {
+            return new int[]{-1};
+        }
+
+        int[] elementsWithAscendingDigits = getElementsThatHaveAscendingDigitsOnly();
+        int validElements = 0;
+        for (int i = 0; i < elementsWithAscendingDigits.length; i++) {
+            int number = elementsWithAscendingDigits[i];
+            int sizeNumber = getTotalOfDigitsInElement(number);
+            if (sizeNumber == requiredSize) {
+                validElements++;
+            }
+        }
+        int[] allElementsWithRequiredSize = new int[validElements];
+
+
+        return addElementsWithAscendingDigitsWithRequiredSize(allElementsWithRequiredSize,
+                elementsWithAscendingDigits,
+                requiredSize);
+    }
+
+    public int[] addElementsWithAscendingDigitsWithRequiredSize(int[] allElementsWithRequiredSize,
+                                                                int[] elementsWithAscendingDigits,
+                                                                int requiredSize) {
+        int index = 0;
+        for (int i = 0; i < elementsWithAscendingDigits.length; i++) {
+            int number = elementsWithAscendingDigits[i];
+            int sizeNumber = getTotalOfDigitsInElement(number);
+            if (sizeNumber == requiredSize) {
+                allElementsWithRequiredSize[index] = number;
+                index++;
+            }
+        }
+        return allElementsWithRequiredSize;
+    }
 }

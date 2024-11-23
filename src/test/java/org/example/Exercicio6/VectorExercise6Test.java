@@ -544,4 +544,28 @@ class VectorExercise6Test {
                 Arguments.of(new int[]{}, new int[]{-1})
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider23")
+    void should_return_elements_of_a_determined_size_if_they_are_ascending(int[] initialArray, int requiredSize, int[] expected) {
+        //arrange
+        VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
+        //act
+        int[] result = vectorExercise6.getAllElementsOfCertainSizeIfDigitsAreAscending(requiredSize);
+        //assert
+        assertArrayEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider23() {
+        return Stream.of(
+                Arguments.of(new int[]{1, 135, 370}, 3, new int[]{135}),
+                Arguments.of(new int[]{0}, 3, new int[]{}),
+                Arguments.of(new int[]{10, -135, 370}, 3,new int[]{-135}),
+                Arguments.of(new int[]{-1 ,0, 1}, 3, new int[]{}),
+                Arguments.of(new int[]{-1 ,135, 1}, 1, new int[]{-1, 1}),
+                Arguments.of(null, 1, new int[]{-1}),
+                Arguments.of(new int[]{}, 1, new int[]{-1})
+        );
+    }
 }
