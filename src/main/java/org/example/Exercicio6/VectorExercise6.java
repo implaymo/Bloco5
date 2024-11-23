@@ -456,14 +456,8 @@ public class VectorExercise6 {
         }
 
         int[] allElementsWithAscendingDigits = new int[elementsAscendingDigits];
-        int index = 0;
-        for (int j = 0; j <  _array.length; j++) {
-            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[j]), _array[j]);
-            if (hasAscendingDigits(allElementsDigits)) {
-                allElementsWithAscendingDigits[index] = _array[j];
-                index++;
-            }
-        }
+
+        allElementsWithAscendingDigits = addElementsWithAscendingDigits(allElementsWithAscendingDigits);
 
         return allElementsWithAscendingDigits;
     }
@@ -490,6 +484,18 @@ public class VectorExercise6 {
             }
         }
         return true;
+    }
+
+    public int[] addElementsWithAscendingDigits(int[]allElementsWithAscendingDigits) {
+        int index = 0;
+        for (int j = 0; j < _array.length; j++) {
+            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[j]), _array[j]);
+            if (hasAscendingDigits(allElementsDigits)) {
+                allElementsWithAscendingDigits[index] = _array[j];
+                index++;
+            }
+        }
+        return allElementsWithAscendingDigits;
     }
 
     /////////////////////////////////////////////////////////////////
