@@ -568,4 +568,23 @@ class VectorExercise6Test {
                 Arguments.of(new int[]{}, 1, new int[]{-1})
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider24")
+    void should_return_true_if_arrays_are_equal(int[] initialArray, int[] arrayProvided) {
+        //arrange
+        VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
+        //act
+        boolean result = vectorExercise6.isVectorEqual(arrayProvided);
+        //assert
+        assertTrue(result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider24() {
+        return Stream.of(
+                Arguments.of(new int[]{1, 2, 3}, new int[]{1, 2, 3}),
+                Arguments.of(new int[]{2, 1, 0}, new int[]{2, 1, 0})
+        );
+    }
 }

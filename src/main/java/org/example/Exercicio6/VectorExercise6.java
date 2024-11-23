@@ -705,4 +705,30 @@ public class VectorExercise6 {
         }
         return allElementsWithRequiredSize;
     }
+
+    /////////////////////////////////////////////////////////
+
+
+    //////////////////// Exercise 27 /////////////////////////
+
+    public boolean isVectorEqual(int[] vector) {
+        if (isArrayEmptyOrNull()) {
+            return false;
+        }
+
+        int arraySize = _array.length;
+        int vectorSize = vector.length;
+        if(arraySize != vectorSize) {
+            return false;
+        } else{
+            for (int i = 0; i < arraySize; i++) {
+                int arrayNumber = _array[i];
+                int vectorNumber = vector[i];
+                if (arrayNumber != vectorNumber){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }
