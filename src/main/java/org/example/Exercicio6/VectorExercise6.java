@@ -573,7 +573,8 @@ public class VectorExercise6 {
 
         int countElementsThatHaveTheSameDigits = 0;
         for (int i = 0; i < _array.length; i++) {
-            int [] allElementDigits = getElementDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
+            int number = _array[i];
+            int [] allElementDigits = getElementDigits(getTotalOfDigitsInElement(number), number);
             if (hasAllDigitsEqual(allElementDigits)) {
                 countElementsThatHaveTheSameDigits++;
             }
@@ -599,7 +600,8 @@ public class VectorExercise6 {
     public int[] addAllElementWithEqualDigits(int[] elementsWithEqualDigits){
         int index = 0;
         for (int i = 0; i < _array.length; i++) {
-            int [] allElementDigits = getElementDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
+            int number = _array[i];
+            int [] allElementDigits = getElementDigits(getTotalOfDigitsInElement(number), number);
             if (hasAllDigitsEqual(allElementDigits)) {
                 elementsWithEqualDigits[index] = _array[i];
                 index++;
@@ -607,11 +609,57 @@ public class VectorExercise6 {
         }
         return elementsWithEqualDigits;
     }
-
-
-
-
-
     ///////////////////////////////////////////////////////////////77
 
+
+
+    //////////////// Exercise 25 ////////////////////////////////
+
+    public int[] getAllNotArmstrongElements(){
+        if (isArrayEmptyOrNull()) {
+            return new int[]{-1};
+        }
+
+        int countAllNotArmstrongElements = 0;
+        for (int i = 0; i < _array.length; i++) {
+            int number = _array[i];
+            if (isElementNotArmstrong(number)) {
+                countAllNotArmstrongElements++;
+            }
+        }
+        int[] allNotArmstrongNumbers = new int[countAllNotArmstrongElements];
+
+        return addAllNotArmstrongElements(allNotArmstrongNumbers);
+    }
+
+    public boolean isElementNotArmstrong(int number) {
+        double sumOfDigitsCube = 0;
+        int originalNumber = number;
+        String numberAsString = String.valueOf(number);
+        if (number == 0) {
+            return false;
+        }
+
+        while (number > 0) {
+            int lastDigit = number % 10;
+            sumOfDigitsCube += Math.pow(lastDigit, numberAsString.length());
+            number /= 10;
+        }
+        if (sumOfDigitsCube != originalNumber) {
+            return true;
+        }
+        return false;
+    }
+
+    public int[] addAllNotArmstrongElements(int[] allNotArmstrongNumbers){
+        int index = 0;
+        for (int i = 0; i < _array.length; i++) {
+            int number = _array[i];
+            if (isElementNotArmstrong(number)) {
+                allNotArmstrongNumbers[index] = number;
+                index++;
+            }
+        }
+        return allNotArmstrongNumbers;
+    }
 }

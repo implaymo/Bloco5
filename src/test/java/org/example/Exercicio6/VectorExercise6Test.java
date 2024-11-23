@@ -521,4 +521,27 @@ class VectorExercise6Test {
                 Arguments.of(new int[]{}, new int[]{-1})
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider22")
+    void should_return_all_armstrong_elements(int[] initialArray, int[] expected) {
+        //arrange
+        VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
+        //act
+        int[] result = vectorExercise6.getAllNotArmstrongElements();
+        //assert
+        assertArrayEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider22() {
+        return Stream.of(
+                Arguments.of(new int[]{1, 153, 370}, new int[]{}),
+                Arguments.of(new int[]{0}, new int[]{}),
+                Arguments.of(new int[]{10, 153, 370}, new int[]{10}),
+                Arguments.of(new int[]{-1 ,0, 1}, new int[]{-1}),
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[]{}, new int[]{-1})
+        );
+    }
 }
