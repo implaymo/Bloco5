@@ -4,6 +4,10 @@ import org.example.Exercicio2.Exercicio2_2;
 import org.example.Exercicio2.Exercicio2_3;
 import org.example.Exercicio2.Exercicio2_5;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class VectorExercise6 {
 
     private int[] _array;
@@ -455,11 +459,9 @@ public class VectorExercise6 {
             }
         }
 
-        int[] allElementsWithAscendingDigits = new int[elementsAscendingDigits];
+        int[] allElementsWithAscendingDigits = new int[elementsAscendingDigits];;
 
-        allElementsWithAscendingDigits = addElementsWithAscendingDigits(allElementsWithAscendingDigits);
-
-        return allElementsWithAscendingDigits;
+        return addElementsWithAscendingDigits(allElementsWithAscendingDigits);
     }
 
 
@@ -499,4 +501,47 @@ public class VectorExercise6 {
     }
 
     /////////////////////////////////////////////////////////////////
+
+    ///////////////////////// Exercise 23 //////////////////////////
+
+    public int[] getAllPalindromeElements() {
+        if (isArrayEmptyOrNull()){
+            return new int[]{-1};
+        }
+        int totalOfPalindrome = 0;
+        for (int i = 0; i < _array.length; i++) {
+            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
+            if (isElementPalindrome(allElementsDigits, _array[i])) {
+                totalOfPalindrome++;
+            }
+        }
+        return addPalindromeElements(totalOfPalindrome);
+    }
+
+    public boolean isElementPalindrome(int[] allElementDigits, int number){
+        int lastDigit;
+        int index = 0;
+        while (number > 0) {
+            lastDigit = number % 10;
+            if (allElementDigits[index] != lastDigit) {
+                return false;
+            }
+            number = number / 10;
+            index++;
+        }
+        return true;
+    }
+
+    public int[] addPalindromeElements(int totalOfPalindrome) {
+        int index = 0;
+        int[] allPalindromeElements = new int[totalOfPalindrome];
+        for (int i = 0; i < _array.length; i++) {
+            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
+            if (isElementPalindrome(allElementsDigits, _array[i])) {
+                allPalindromeElements[index] = _array[i];
+                index++;
+            }
+        }
+        return allPalindromeElements;
+    }
 }
