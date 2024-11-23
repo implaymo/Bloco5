@@ -441,6 +441,7 @@ class VectorExercise6Test {
         return Stream.of(
                 Arguments.of(new int[]{248, 135, 860}, new int[]{248, 860}),
                 Arguments.of(new int[]{-248, 135, 860}, new int[]{-248, 860}),
+                Arguments.of(new int[]{333, 777}, new int[]{}),
                 Arguments.of(new int[]{1 ,0, 1}, new int[]{0}),
                 Arguments.of(new int[]{1 ,1, 1}, new int[]{}),
                 Arguments.of(null, new int[]{-1}),
@@ -463,8 +464,9 @@ class VectorExercise6Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider19() {
         return Stream.of(
-                Arguments.of(new int[]{248, 135, 860}, new int[]{248, 135}),
+                Arguments.of(new int[]{248, 860, 135}, new int[]{248, 135}),
                 Arguments.of(new int[]{-248, 135, 860}, new int[]{-248, 135}),
+                Arguments.of(new int[]{-222, 333, 444}, new int[]{}),
                 Arguments.of(new int[]{1 ,0, 1}, new int[]{1, 0 , 1}),
                 Arguments.of(new int[]{1 ,1, 1}, new int[]{1, 1, 1}),
                 Arguments.of(null, new int[]{-1}),
@@ -486,7 +488,7 @@ class VectorExercise6Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider20() {
         return Stream.of(
-                Arguments.of(new int[]{121, 135, 860}, new int[]{121}),
+                Arguments.of(new int[]{121, 135, 860}, new int[]{}),
                 Arguments.of(new int[]{-1771, 135, 860}, new int[]{-1771}),
                 Arguments.of(new int[]{1 ,0, 1}, new int[]{1, 0 , 1}),
                 Arguments.of(new int[]{1 ,1, 1}, new int[]{1, 1, 1}),

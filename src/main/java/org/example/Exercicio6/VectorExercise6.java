@@ -453,8 +453,9 @@ public class VectorExercise6 {
 
         int elementsAscendingDigits = 0;
         for (int i = 0; i < _array.length; i++) {
-            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[i]), _array[i]);
-            if (hasAscendingDigits(allElementsDigits)) {
+            int element = Math.abs(_array[i]);
+            int totalDigits = getTotalOfDigitsInElement(element);
+            if (hasAscendingDigits(getAllElementsDigits(totalDigits,element))) {
                 elementsAscendingDigits++;
             }
         }
@@ -481,7 +482,7 @@ public class VectorExercise6 {
 
     public boolean hasAscendingDigits(int[] allELementDigits){
         for (int i = 0; i < allELementDigits.length - 1; i++) {
-            if(allELementDigits[i] > allELementDigits[i + 1]) {
+            if(allELementDigits[i] >= allELementDigits[i + 1]) {
                 return false;
             }
         }
@@ -491,7 +492,9 @@ public class VectorExercise6 {
     public int[] addElementsWithAscendingDigits(int[]allElementsWithAscendingDigits) {
         int index = 0;
         for (int j = 0; j < _array.length; j++) {
-            int [] allElementsDigits = getAllElementsDigits(getTotalOfDigitsInElement(_array[j]), _array[j]);
+            int element = Math.abs(_array[j]);
+            int totalDigits = getTotalOfDigitsInElement(element);
+            int [] allElementsDigits = getAllElementsDigits(totalDigits, element);
             if (hasAscendingDigits(allElementsDigits)) {
                 allElementsWithAscendingDigits[index] = _array[j];
                 index++;
@@ -549,4 +552,16 @@ public class VectorExercise6 {
 
 
     ////////////////////// Exercise 24 /////////////////////////////////
+
+    public int[] getAllElementsWithTheSameDigits(){
+        if (isArrayEmptyOrNull()){
+            return new int[]{-1};
+        }
+
+        return new int[]{-1};
+    }
+
+
+
+
 }
