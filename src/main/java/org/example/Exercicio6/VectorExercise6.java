@@ -392,4 +392,50 @@ public class VectorExercise6 {
     }
 
     ///////////////////////////////////////////////////////////////
+
+    //////////////////// Exercise 21 //////////////////////////
+    public int[] getElementsThatOnlyHaveEvenDigits(){
+        if (isArrayEmptyOrNull()) {
+            return new int[]{-1};
+        }
+
+        int countElementsOnlyWithEvenDigits = 0;
+        for (int i = 0; i < _array.length; i++) {
+            if(hasElementOnlyEvenDigits(_array[i])) {
+                countElementsOnlyWithEvenDigits++;
+            }
+        }
+        int[] allElementsOnlyWithEvenDigits = new int[countElementsOnlyWithEvenDigits];
+        int[] finalNumbers = addElementsOnlyWithEvenDigits(allElementsOnlyWithEvenDigits);
+
+        return finalNumbers;
+    }
+
+
+    public boolean hasElementOnlyEvenDigits(int number) {
+        if (number == 0) {
+            return true;
+        }
+        int lastDigit;
+        while (number > 0) {
+            lastDigit = number % 10;
+            if (lastDigit % 2 != 0) {
+                return false;
+            }
+            number = number / 10;
+        }
+        return true;
+    }
+
+    public int[] addElementsOnlyWithEvenDigits(int[] arrayElementsOnlyEvenDigits){
+        int index = 0;
+        for (int i = 0; i < _array.length; i++) {
+            if(hasElementOnlyEvenDigits(_array[i])) {
+                arrayElementsOnlyEvenDigits[index] = _array[i];
+                index++;
+            }
+
+        }
+        return arrayElementsOnlyEvenDigits;
+    }
 }
