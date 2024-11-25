@@ -2,6 +2,7 @@ package org.example.Exercicio6;
 
 import org.example.Exercicio2.Exercicio2_1;
 import org.example.Exercicio2.Exercicio2_2;
+import org.example.Exercicio2.Exercicio2_3;
 
 public class BidimensionalVector {
 
@@ -128,9 +129,18 @@ public class BidimensionalVector {
         if(isMatrixNullOrEmpty()){
             return -1;
         }
+
         int lowestValueMatrix = Exercicio2_1.getLowestNumber(_matrix);
         return lowestValueMatrix;
     }
 
-    /// /////////////////////////////////////////////////
+    ////////////////////////////////////////////////////
+
+    public double getAverageMatrix() {
+        if (isMatrixNullOrEmpty()) {
+            return -1;
+        }
+
+        return Exercicio2_3.averageNumber(_matrix);
+    }
 }

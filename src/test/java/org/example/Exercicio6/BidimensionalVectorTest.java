@@ -134,4 +134,28 @@ class BidimensionalVectorTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("arrayProvider5")
+    void should_return_average_value_of_matrix(int[][] initialBidimensionalArray, double expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        double result = bidimensionalVector.getAverageMatrix();
+        //assert
+        assertEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider5() {
+        return Stream.of(
+                Arguments.of(null, -1),
+                Arguments.of(new int[][]{null, {}}, -1),
+                Arguments.of(new int[][]{{}, {}}, -1),
+                Arguments.of(new int[][]{{1,2},{3,4}}, 2.5),
+                Arguments.of(new int[][]{{-1,2}, {0,1}}, 0.5),
+                Arguments.of(new int[][]{{-1,-2}, {-3}}, -2.0),
+                Arguments.of(new int[][]{{0,1}, {2}}, 1.0)
+        );
+    }
+
 }
