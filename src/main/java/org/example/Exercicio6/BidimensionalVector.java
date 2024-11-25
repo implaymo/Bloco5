@@ -143,4 +143,21 @@ public class BidimensionalVector {
 
         return Exercicio2_3.averageNumber(_matrix);
     }
+
+
+    /// ///////////////////////// Exercise 9 ////////////////////////////
+
+    public int[] getRowsSum(){
+        if (isMatrixNullOrEmpty()) {
+            return new int[]{-1};
+        }
+
+        int[] arrayOfSumMatrixRow = new int[_matrix.length];
+        for (int i = 0; i < _matrix.length; i++) {
+            arrayOfSumMatrixRow[i] = Exercicio2_3.sumLineNumbers(_matrix[i]);
+        }
+        return arrayOfSumMatrixRow;
+    }
+
+    /// /////////////////////////////////////////////////////7
 }

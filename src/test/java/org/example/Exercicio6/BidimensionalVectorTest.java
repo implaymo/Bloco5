@@ -158,4 +158,28 @@ class BidimensionalVectorTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("arrayProvider6")
+    void should_return_array_which_each_positions_is_the_sum_of_matrix_row(int[][] initialBidimensionalArray, int[] expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int[] result = bidimensionalVector.getRowsSum();
+        //assert
+        assertArrayEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider6() {
+        return Stream.of(
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[][]{null, {}}, new int[]{-1}),
+                Arguments.of(new int[][]{{}, {}}, new int[]{-1}),
+                Arguments.of(new int[][]{{1,2},{3,4}}, new int[]{3, 7}),
+                Arguments.of(new int[][]{{-1,2}, {0,1}}, new int[]{1, 1}),
+                Arguments.of(new int[][]{{-1,-2}, {-3}}, new int[]{-3, -3}),
+                Arguments.of(new int[][]{{0,1}, {2}}, new int[]{1, 2})
+        );
+    }
+
 }
