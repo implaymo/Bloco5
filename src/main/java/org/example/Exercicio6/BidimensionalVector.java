@@ -1,5 +1,8 @@
 package org.example.Exercicio6;
 
+import org.example.Exercicio2.Exercicio2_1;
+import org.example.Exercicio2.Exercicio2_2;
+
 public class BidimensionalVector {
 
     private int[][] _matrix;
@@ -65,7 +68,7 @@ public class BidimensionalVector {
         return count;
     }
 
-    public int[] removeValue(int value, int totalValueAppear,int[] row) {
+    public int[] removeValue(int value, int totalValueAppear, int[] row) {
         int newSizeOfRow = row.length - totalValueAppear;
         int[] newRow = new int[newSizeOfRow];
         int index = 0;
@@ -112,56 +115,22 @@ public class BidimensionalVector {
         if (isMatrixNullOrEmpty()) {
             return -1;
         }
-        int biggestValueMatrix = _matrix[0][0];
-        for (int i = 0; i < _matrix.length; i++) {
-            int[] row = _matrix[i];
-            int biggestValueRow = getBiggestValueRow(row);
-            if(biggestValueRow > biggestValueMatrix) {
-                biggestValueMatrix = biggestValueRow;
-            }
-        }
+        int biggestValueMatrix = Exercicio2_2.getHighestNumber(_matrix);
 
         return biggestValueMatrix;
     }
 
-    public int getBiggestValueRow(int[] row) {
-        int biggestValue = row[0];
-        for (int i = 0; i < row.length; i++) {
-            int number = row[i];
-            if (number > biggestValue) {
-                biggestValue = number;
-            }
-        }
-        return biggestValue;
-    }
-
     /// //////////////////////////////////////77
 
-    /// /////////////// Exercise 8 ////////////////////////////
+    /// /////////////// Exercise7 ////////////////////////////
 
     public int getLowestValueMatrix() {
         if(isMatrixNullOrEmpty()){
             return -1;
         }
-        int lowestValueMatrix = _matrix[0][0];
-        for (int i = 0; i < _matrix.length; i++) {
-            int[] row = _matrix[i];
-            int lowestValueRow = getLowestValueRow(row);
-            if (lowestValueRow < lowestValueMatrix) {
-                lowestValueMatrix = lowestValueRow;
-            }
-        }
+        int lowestValueMatrix = Exercicio2_1.getLowestNumber(_matrix);
         return lowestValueMatrix;
     }
 
-    public int getLowestValueRow(int[] row) {
-        int lowestValue = row[0];
-        for(int i = 0; i < row.length; i++) {
-            int number = row[i];
-            if (number < lowestValue) {
-                lowestValue = number;
-            }
-        }
-        return lowestValue;
-    }
+    /// /////////////////////////////////////////////////
 }
