@@ -85,6 +85,10 @@ public class BidimensionalVector {
     /// /////////////////////// Exercise 5 ///////////////////////////////////
 
     public boolean isMatrixNullOrEmpty(){
+        if (_matrix == null) {
+            return true;
+        }
+
         for (int i = 0; i < _matrix.length; i++) {
             if(isRowNullOrEmpty(_matrix[i])) {
                 return true;
@@ -110,7 +114,8 @@ public class BidimensionalVector {
         }
         int biggestValueMatrix = _matrix[0][0];
         for (int i = 0; i < _matrix.length; i++) {
-            int biggestValueRow = getBiggestValueRow(_matrix[i]);
+            int[] row = _matrix[i];
+            int biggestValueRow = getBiggestValueRow(row);
             if(biggestValueRow > biggestValueMatrix) {
                 biggestValueMatrix = biggestValueRow;
             }
@@ -128,5 +133,35 @@ public class BidimensionalVector {
             }
         }
         return biggestValue;
+    }
+
+    /// //////////////////////////////////////77
+
+    /// /////////////// Exercise 8 ////////////////////////////
+
+    public int getLowestValueMatrix() {
+        if(isMatrixNullOrEmpty()){
+            return -1;
+        }
+        int lowestValueMatrix = _matrix[0][0];
+        for (int i = 0; i < _matrix.length; i++) {
+            int[] row = _matrix[i];
+            int lowestValueRow = getLowestValueRow(row);
+            if (lowestValueRow < lowestValueMatrix) {
+                lowestValueMatrix = lowestValueRow;
+            }
+        }
+        return lowestValueMatrix;
+    }
+
+    public int getLowestValueRow(int[] row) {
+        int lowestValue = row[0];
+        for(int i = 0; i < row.length; i++) {
+            int number = row[i];
+            if (number < lowestValue) {
+                lowestValue = number;
+            }
+        }
+        return lowestValue;
     }
 }

@@ -100,11 +100,38 @@ class BidimensionalVectorTest {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider3() {
         return Stream.of(
+                Arguments.of(null, -1),
+                Arguments.of(new int[][]{null, {}}, -1),
                 Arguments.of(new int[][]{{1,2},{3,4}}, 4),
                 Arguments.of(new int[][]{{-1,2}, {0,1}}, 2),
                 Arguments.of(new int[][]{{-1,-2}, {-3}}, -1),
-                Arguments.of(new int[][]{{0,-1}, {-2}}, 0)
+                Arguments.of(new int[][]{{0,-1}, {-2}}, 0),
+                Arguments.of(new int[][]{{}, {}}, -1)
                 );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider4")
+    void should_return_lowest_value_of_matrix(int[][] initialBidimensionalArray, int expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int result = bidimensionalVector.getLowestValueMatrix();
+        //assert
+        assertEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider4() {
+        return Stream.of(
+                Arguments.of(null, -1),
+                Arguments.of(new int[][]{null, {}}, -1),
+                Arguments.of(new int[][]{{}, {}}, -1),
+                Arguments.of(new int[][]{{1,2},{3,4}}, 1),
+                Arguments.of(new int[][]{{-1,2}, {0,1}}, -1),
+                Arguments.of(new int[][]{{-1,-2}, {-3}}, -3),
+                Arguments.of(new int[][]{{0,1}, {2}}, 0)
+        );
     }
 
 }
