@@ -99,4 +99,34 @@ public class BidimensionalVector {
         }
         return false;
     }
+
+    /// /////////////////////////////////////////////////////
+
+    /// ///////////////// Exercise 6 ////////////////////////
+
+    public int getBiggestValueMatrix() {
+        if (isMatrixNullOrEmpty()) {
+            return -1;
+        }
+        int biggestValueMatrix = _matrix[0][0];
+        for (int i = 0; i < _matrix.length; i++) {
+            int biggestValueRow = getBiggestValueRow(_matrix[i]);
+            if(biggestValueRow > biggestValueMatrix) {
+                biggestValueMatrix = biggestValueRow;
+            }
+        }
+
+        return biggestValueMatrix;
+    }
+
+    public int getBiggestValueRow(int[] row) {
+        int biggestValue = row[0];
+        for (int i = 0; i < row.length; i++) {
+            int number = row[i];
+            if (number > biggestValue) {
+                biggestValue = number;
+            }
+        }
+        return biggestValue;
+    }
 }
