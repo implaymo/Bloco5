@@ -30,15 +30,40 @@ public class VectorExercise6 {
         return true;
     }
 
-    public boolean removeFirstValue() {
-        int[] newArray = new int[_array.length - 1];
-        for (int i = 0; i < _array.length - 1; i++) {
-            newArray[i] = _array[i + 1];
-        }
-        _array = newArray;
+    ///////////////////////// Exercise 4 ////////////////////////////
 
-        return true;
+    public boolean isValueRemoved(int value) {
+        int count = 0;
+        for (int i = 0; i < _array.length; i++) {
+            int number = _array[i];
+            if (number == value) {
+                count++;
+            }
+        }
+        if (count != 0) {
+            int[] newArray = new int[_array.length - count];
+            _array = removeValue(newArray, value);
+            return true;
+        }
+
+        return false;
     }
+
+
+    public int[] removeValue(int[] newArray, int value) {
+        int index = 0;
+        for (int i = 0; i < _array.length; i++) {
+            int number = _array[i];
+            if (number == value) {
+                continue;
+            }
+            newArray[index] = _array[i];
+            index++;
+        }
+        return newArray;
+    }
+
+    ////////////////////////////////////////////////////////////////////
 
     public int getValue(int index) {
         if(isArrayEmptyOrNull()){

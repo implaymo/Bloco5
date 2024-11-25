@@ -46,11 +46,11 @@ class VectorExercise6Test {
 
     @ParameterizedTest
     @MethodSource("arrayProvider1")
-    void should_return_array_with_first_value_removed(int[] initialArray) {
+    void should_return_array_with_first_value_removed(int[] initialArray, int value) {
         //arrange
         VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
         //act
-        boolean result = vectorExercise6.removeFirstValue();
+        boolean result = vectorExercise6.isValueRemoved(value);
         //assert
         assertTrue(result);
     }
@@ -58,9 +58,8 @@ class VectorExercise6Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider1() {
         return Stream.of(
-                Arguments.of(new int[]{1,2,3}),
-                Arguments.of(new int[]{0,2,3}),
-                Arguments.of(new int[]{-1,2,3})
+                Arguments.of(new int[]{1,2,3}, 2),
+                Arguments.of(new int[]{-1,2,3}, -1)
         );
     }
 
