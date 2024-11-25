@@ -66,6 +66,26 @@ class BidimensionalVectorTest {
         );
     }
 
+    @ParameterizedTest
+    @MethodSource("arrayProvider2")
+    void should_return_true_if_matrix_is_empty_or_null(int[][] initialBidimensionalArray) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        boolean result = bidimensionalVector.isMatrixNullOrEmpty();
+        //assert
+        assertTrue(result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider2() {
+        return Stream.of(
+                Arguments.of((Object) new int[][]{{},{}}),
+                Arguments.of((Object) new int[][]{{1,2}, {}}),
+                Arguments.of((Object) new int[][]{{1,2}, {}})
+        );
+    }
+
 
 
 }

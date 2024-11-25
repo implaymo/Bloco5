@@ -79,4 +79,24 @@ public class BidimensionalVector {
         }
         return  newRow;
     }
+
+    /// /////////////////////////////////////////////////////
+
+    /// /////////////////////// Exercise 5 ///////////////////////////////////
+
+    public boolean isMatrixNullOrEmpty(){
+        for (int i = 0; i < _matrix.length; i++) {
+            if(isRowNullOrEmpty(_matrix[i])) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isRowNullOrEmpty(int[] row){
+        if (row == null || row.length == 0) {
+            return true;
+        }
+        return false;
+    }
 }
