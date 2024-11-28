@@ -2,8 +2,11 @@ package org.example.Bloco6.exercicio2;
 
 import org.example.Bloco5.Exercicio1.Exercicio1_1;
 import org.example.Bloco5.Exercicio2.Exercicio2_1;
+import org.example.Bloco5.Exercicio2.Exercicio2_11;
 import org.example.Bloco5.Exercicio2.Exercicio2_2;
 import org.example.Bloco5.Exercicio2.Exercicio2_3;
+
+import java.util.Arrays;
 
 public class BidimensionalVector {
 
@@ -226,5 +229,14 @@ public class BidimensionalVector {
 
     /// ////////////////////////// Exercise 13 ////////////////////////////////
 
+    public boolean isMatrixSquareAndSymmetric(){
+        int[][] transposeMatrix = Exercicio2_11.transposeMatrix(_matrix);
+        if(Arrays.deepEquals(_matrix, transposeMatrix)){
+            return true;
+        }
+        return false;
+    }
+
+    /// //////////////////////////////////////////////////////////////////////
 
 }
