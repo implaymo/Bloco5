@@ -1,10 +1,7 @@
 package org.example.Bloco6.exercicio2;
 
 import org.example.Bloco5.Exercicio1.Exercicio1_1;
-import org.example.Bloco5.Exercicio2.Exercicio2_1;
-import org.example.Bloco5.Exercicio2.Exercicio2_11;
-import org.example.Bloco5.Exercicio2.Exercicio2_2;
-import org.example.Bloco5.Exercicio2.Exercicio2_3;
+import org.example.Bloco5.Exercicio2.*;
 
 import java.util.Arrays;
 
@@ -238,5 +235,21 @@ public class BidimensionalVector {
     }
 
     /// //////////////////////////////////////////////////////////////////////
+
+    /// ///////////////////////// Exercise 14 //////////////////////////////
+
+    public int getTotalOfNoneNegativeNumbersInPrincipalDiagonal(){
+        if (isMatrixNullOrEmpty() || !isMatrixSquare()) {
+            return -1;
+        }
+        int[] principalDiagonal = Exercicio2_7.principalMatrixDiagonal(_matrix);
+        int totalNoneNegativeNumbers = 0;
+        for (int i = 0; i < principalDiagonal.length; i++){
+            if (principalDiagonal[i] >= 0) {
+                totalNoneNegativeNumbers++;
+            }
+        }
+        return totalNoneNegativeNumbers;
+    }
 
 }
