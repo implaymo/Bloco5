@@ -1,5 +1,6 @@
 package org.example.Exercicio2;
 
+import org.example.Bloco5.Exercicio2.Exercicio2_8;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -29,12 +30,12 @@ class Exercicio2_8Test {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider() {
         return Stream.of(
-                Arguments.of(new int[][]{{1, 1}, {2,2}}, new int[]{2, 1}),
-                Arguments.of(new int[][]{{1, 2}, {2,3}, {3,4}}, new int[]{2,2}),
-                Arguments.of(new int[][]{{1, 2, 3}, {3, 4, 5}, {6, 7, 8}}, new int[]{6, 4, 3}),
+                Arguments.of(new int[][]{{1, 1}, {2,2}}, new int[]{1, 2}),
+                Arguments.of(new int[][]{{1, 2}, {2,3}, {3,4}}, new int[]{-1}),
+                Arguments.of(new int[][]{{1, 2, 3}, {3, 4, 5}, {6, 7, 8}}, new int[]{3, 4, 6}),
                 Arguments.of(new int[][]{{}, {}, {}}, new int[]{-1}),
                 Arguments.of(new int[][]{{1, 1}, {}, {3}}, new int[]{-1}),
-                Arguments.of(new int[][]{{1}, {0}, {3}}, new int[]{1}),
+                Arguments.of(new int[][]{{1}, {0}, {3}}, new int[]{-1}),
                 Arguments.of(new int[][]{{1, 2}, {2, 3}, {}}, new int[]{-1}),
                 Arguments.of(new int[][]{{1, 2}, {2,3}, {3,4,5}}, new int[]{-1})
                 );

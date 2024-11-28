@@ -1,5 +1,6 @@
 package org.example.Exercicio1;
 
+import org.example.Bloco5.Exercicio1.Exercicio1_2;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

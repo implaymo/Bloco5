@@ -1,5 +1,6 @@
 package org.example.Exercicio4;
 
+import org.example.Bloco5.Exercicio4.Exercicio4_2;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

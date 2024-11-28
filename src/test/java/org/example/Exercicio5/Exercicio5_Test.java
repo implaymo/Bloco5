@@ -1,5 +1,8 @@
 package org.example.Exercicio5;
 
+import org.example.Bloco5.Exercicio5.Exercicio5;
+import org.example.Bloco5.Exercicio5.SudokuBoardValidation;
+import org.example.Bloco5.Exercicio5.SudokuRules;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;

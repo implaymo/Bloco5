@@ -2,6 +2,7 @@ package org.example.Bloco6.exercicio2;
 
 import org.example.Bloco5.Exercicio1.Exercicio1_1;
 import org.example.Bloco5.Exercicio2.*;
+import org.example.Bloco6.exercicio1.VectorExercise6;
 
 import java.util.Arrays;
 import java.util.Vector;
@@ -15,8 +16,25 @@ public class BidimensionalVector {
     }
 
 
-    public BidimensionalVector(int[][] newMatrix) {
-        this._matrix = newMatrix;
+    public BidimensionalVector(int[][] matrix) {
+        if (matrix == null) {
+            this._matrix = null;
+        } else{
+            this._matrix = copyMatrix(matrix);
+        }
+    }
+
+    public int[][] copyMatrix(int[][] matrix) {
+        int[][] copyMatrix = new int[matrix.length][];
+        for (int i = 0; i < matrix.length; i++) {
+            if(matrix[i] == null) {
+                return null;
+            }
+            VectorExercise6 vectorExercise6 = new VectorExercise6(matrix[i]);
+            int[] row = vectorExercise6.copyVector(matrix[i]);
+            copyMatrix[i] = row;
+        }
+        return  copyMatrix;
     }
 
     /// ///////////////////////// Exercise 3 /////////////////////////////
@@ -264,6 +282,15 @@ public class BidimensionalVector {
         return false;
     }
 
-    /// /////////////////////////////////////////////////////////////////////7
+    /// /////////////////////////////////////////////////////////////////////
+
+    /// //////////////////////// Exercise 16 //////////////////////////////
+
+    public int[] getAllElementsWhichHaveHigherEvenDigitsPercentageThanTheAverageOfEvenDigits(){
+
+        return new int[] {-1};
+    }
+
+    /// /////////////////////////////////////////////////////////////////
 
 }

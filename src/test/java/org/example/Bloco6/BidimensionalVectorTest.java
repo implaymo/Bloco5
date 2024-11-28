@@ -1,5 +1,6 @@
-package org.example.Exercicio6;
+package org.example.Bloco6;
 
+import org.example.Bloco6.exercicio2.BidimensionalVector;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -101,7 +102,7 @@ class BidimensionalVectorTest {
     private static Stream<Arguments> arrayProvider3() {
         return Stream.of(
                 Arguments.of(null, -1),
-                Arguments.of(new int[][]{null, {}}, -1),
+                Arguments.of(new int[][]{{}, null}, -1),
                 Arguments.of(new int[][]{{1,2},{3,4}}, 4),
                 Arguments.of(new int[][]{{-1,2}, {0,1}}, 2),
                 Arguments.of(new int[][]{{-1,-2}, {-3}}, -1),
@@ -189,7 +190,7 @@ class BidimensionalVectorTest {
         //arrange
         BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
         //act
-        int[] result = bidimensionalVector.sumOfColumns();
+        int[] result = bidimensionalVector.getSumOfEachColumn();
         //assert
         assertArrayEquals(expected, result);
     }
@@ -197,13 +198,145 @@ class BidimensionalVectorTest {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider7() {
         return Stream.of(
-                Arguments.of(null, new int[]{-1}),
-                Arguments.of(new int[][]{null, {}}, new int[]{-1}),
-                Arguments.of(new int[][]{{}, {}}, new int[]{-1}),
                 Arguments.of(new int[][]{{1,2},{3,4}}, new int[]{4, 6}),
                 Arguments.of(new int[][]{{-1,2}, {0,1}}, new int[]{-1, 3}),
                 Arguments.of(new int[][]{{-1,-2}, {-3}}, new int[]{-4, -2}),
-                Arguments.of(new int[][]{{0,1}, {2}}, new int[]{2, 1})
+                Arguments.of(new int[][]{{0,1}, {2}}, new int[]{2, 1}),
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[][]{null, {}}, new int[]{-1}),
+                Arguments.of(new int[][]{{}, {}}, new int[]{-1})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider8")
+    void should_return_index_array_with_biggest_sum_of_elements(int[][] initialBidimensionalArray, int expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int result = bidimensionalVector.getIndexArrayWithBiggestSumOfElements();
+        //assert
+        assertEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider8() {
+        return Stream.of(
+                Arguments.of(new int[][]{{1,2},{3,4}}, 1),
+                Arguments.of(new int[][]{{-1,2}, {0,1}}, 0),
+                Arguments.of(new int[][]{{-1,-2}, {-3, -2}}, 0),
+                Arguments.of(new int[][]{{0,1}, {2}}, 1),
+                Arguments.of(null, -1),
+                Arguments.of(new int[][]{null, {}}, -1),
+                Arguments.of(new int[][]{{}, {}}, -1)
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider9")
+    void should_return_true_if_matrix_square(int[][] initialBidimensionalArray) {
+        // arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        // act
+        boolean result = bidimensionalVector.isMatrixSquare();
+        // assert
+        assertTrue(result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider9() {
+        return Stream.of(
+                Arguments.of((Object) new int[][]{{2, 2},{2, 2}}),
+                Arguments.of((Object) new int[][]{{2, 2, 4},{1, 2, 3}, {1, 2, 3}})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider10")
+    void should_return_true_if_matrix_square_and_symmetric(int[][] initialBidimensionalArray) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        boolean result = bidimensionalVector.isMatrixSquareAndSymmetric();
+        //assert
+        assertTrue(result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider10() {
+        return Stream.of(
+                Arguments.of((Object) new int[][]{{1, 2, 3}, {2, 4, 5}, {3, 5, 6}}),
+                Arguments.of((Object) new int[][]{{4, 7}, {7, 2}}),
+                Arguments.of((Object) new int[][]{{1, 3, 5, 7}, {3, 2, 4, 6}, {5, 4, 3, 8}, {7, 6, 8, 9}})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider11")
+    void should_return_total_of_none_negative_numbers_in_principal_array_if_matrix_is_square_if_not_return_minus_1(
+            int[][] initialBidimensionalArray, int expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int result = bidimensionalVector.getTotalOfNoneNegativeNumbersInPrincipalDiagonal();
+        //assert
+        assertEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider11() {
+        return Stream.of(
+                Arguments.of((Object) new int[][]{{-1, 2, 3}, {2, 4, 5}, {3, 5, 6}}, 2),
+                Arguments.of((Object) new int[][]{{4, 7}, {7, 2}}, 2),
+                Arguments.of((Object) new int[][]{{0, 3, 5, 7}, {3, -2, 4, 6}, {5, 4, -3, 8}, {7, 6, 8, 9}}, 2),
+                Arguments.of(null, -1),
+                Arguments.of(new int[][]{null, {}}, -1),
+                Arguments.of(new int[][]{{}, {}}, -1),
+                Arguments.of((Object) new int[][]{{4, 7}, {7}}, -1)
+                );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider12")
+    void should_return_true_if_diagonal_primary_and_secondary_are_equal_and_have_the_same_order(
+            int[][] initialBidimensionalArray) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        boolean result = bidimensionalVector.isPrincipalDiagonalEqualSecondaryDiagonalAndSameDigitOrder();
+        //assert
+        assertTrue(result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider12() {
+        return Stream.of(
+                Arguments.of((Object) new int[][]{{1, 2, 1}, {3, 5, 3}, {2, 4, 2}}),
+                Arguments.of((Object) new int[][]{{4, 7, 4}, {6, 8, 6}, {9, 5, 9}}),
+                Arguments.of((Object) new int[][]{{2, 3, 5, 2}, {4, 7, 7, 4}, {1, 6, 6, 1}, {3, 8, 9, 3}})
+        );
+    }
+
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider13")
+    void should_return_array_with_elements_that_have_bigger_even_digits_average_than_the_total_average_of_even_digits(
+        int[][] initialBidimensionalArray, int[] expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int[] result = bidimensionalVector.getAllElementsWhichHaveHigherEvenDigitsPercentageThanTheAverageOfEvenDigits();
+        //assert
+        assertArrayEquals(result, expected);
+
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider13() {
+        return Stream.of(
+                Arguments.of((Object) new int[][]{{1, 2, 1}, {3, 5, 3}, {2, 4, 2}}),
+                Arguments.of((Object) new int[][]{{4, 7, 4}, {6, 8, 6}, {9, 5, 9}}),
+                Arguments.of((Object) new int[][]{{2, 3, 5, 2}, {4, 7, 7, 4}, {1, 6, 6, 1}, {3, 8, 9, 3}})
         );
     }
 

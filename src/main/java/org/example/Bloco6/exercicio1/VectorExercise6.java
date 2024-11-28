@@ -13,7 +13,20 @@ public class VectorExercise6 {
     }
 
     public VectorExercise6(int[] array) {
-        this._array = array;
+        if(array == null) {
+            this._array = null;
+        } else {
+            this._array = copyVector(array);
+        }
+
+    }
+
+    public int[] copyVector(int[] array){
+        int[] copyArray = new int[array.length];
+        for (int i = 0; i < array.length; i++){
+            copyArray[i] = array[i];
+        }
+        return copyArray;
     }
 
 
@@ -66,7 +79,7 @@ public class VectorExercise6 {
     ////////////////////////////////////////////////////////////////////
 
     public int getValue(int index) {
-        if(isArrayEmptyOrNull()){
+        if(isArrayEmptyOrNull() || index < 0 || index > _array.length){
             return -1;
         }
         return _array[index];
