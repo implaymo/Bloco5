@@ -11,10 +11,10 @@ public class Exercicio2_8 {
         }
 
         int[] secundaryDiagonalNumbers = new int[array[0].length];
-        if(Exercicio1_1.isMatrixSquare(array) || Exercicio1_2.isMatrixRectangle(array)){
+        if(Exercicio1_1.isMatrixSquare(array)){
             int index = array[0].length - 1;
-            for (int row = 0; row < array[0].length; row++){
-                secundaryDiagonalNumbers[index] = getNumberBelongsSecundaryDiagonal(array, row,index);
+            for (int row = 0; row < array.length; row++){
+                secundaryDiagonalNumbers[row] = getNumberBelongsSecundaryDiagonal(array[row],index);
                 index--;
             }
             return secundaryDiagonalNumbers;
@@ -22,8 +22,8 @@ public class Exercicio2_8 {
         return new int[]{-1};
     }
 
-    public static int getNumberBelongsSecundaryDiagonal(int[][]array, int row,int index){
-        int number = array[row][index];
+    public static int getNumberBelongsSecundaryDiagonal(int[] array,int index){
+        int number = array[index];
         return number;
     }
 }

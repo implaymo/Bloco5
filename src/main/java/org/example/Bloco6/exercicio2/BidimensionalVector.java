@@ -4,6 +4,7 @@ import org.example.Bloco5.Exercicio1.Exercicio1_1;
 import org.example.Bloco5.Exercicio2.*;
 
 import java.util.Arrays;
+import java.util.Vector;
 
 public class BidimensionalVector {
 
@@ -251,5 +252,18 @@ public class BidimensionalVector {
         }
         return totalNoneNegativeNumbers;
     }
+
+    /// /////////////////////////////// Exercise 15 ///////////////////////////////
+
+    public boolean isPrincipalDiagonalEqualSecondaryDiagonalAndSameDigitOrder(){
+        int[] principalDiagonal = Exercicio2_7.principalMatrixDiagonal(_matrix);
+        int[] secondaryDiagonal = Exercicio2_8.secundaryMatrixDiagonal(_matrix);
+        if (Arrays.equals(principalDiagonal, secondaryDiagonal)) {
+            return true;
+        }
+        return false;
+    }
+
+    /// /////////////////////////////////////////////////////////////////////7
 
 }
