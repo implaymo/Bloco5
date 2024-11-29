@@ -326,7 +326,7 @@ public class VectorExercise6 {
             return new int[]{-1};
         }
         double percentageEvenDigitsAllElements = getTotalPercentageOfEvenDigitsArray();
-        double percentageEvenDigitsInNumber = 0;
+        double percentageEvenDigitsInNumber;
         int totalNumbersPercentageEvenDigitsBiggerThanAllElementsPercentage = 0;
 
         for (int i = 0; i < _array.length; i++) {

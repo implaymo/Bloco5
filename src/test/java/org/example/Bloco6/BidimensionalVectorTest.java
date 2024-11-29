@@ -334,9 +334,12 @@ class BidimensionalVectorTest {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider13() {
         return Stream.of(
-                Arguments.of((Object) new int[][]{{1, 2, 1}, {3, 5, 3}, {2, 4, 2}}),
-                Arguments.of((Object) new int[][]{{4, 7, 4}, {6, 8, 6}, {9, 5, 9}}),
-                Arguments.of((Object) new int[][]{{2, 3, 5, 2}, {4, 7, 7, 4}, {1, 6, 6, 1}, {3, 8, 9, 3}})
+                Arguments.of(new int[][]{{248, 135, 860},{248, 135, 860}}, new int[]{248, 860, 248, 860}),
+                Arguments.of(new int[][]{{5, 5, 3},{-248, 135, 860}}, new int[]{-248, 860}),
+                Arguments.of(new int[][]{{1},{0}}, new int[]{0}),
+                Arguments.of(new int[][]{{1},{1,1}}, new int[]{}),
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[][]{{},{}}, new int[]{-1})
         );
     }
 

@@ -12,7 +12,7 @@ public class Exercicio2_5 {
         for (int i = 0; i < array.length; i++) {
             totalElements += getTotalElementsInArray(array[i]);
         }
-        int[] arrayAllElements = addAllElementsToOneDimensionalArray(array, totalElements);
+        int[] arrayAllElements = addMatrixElementsToOneDimensionalArray(array, totalElements);
         int totalNumbersNotRepeated = countAllElementsNotRepeated(arrayAllElements);
         int[] numbersNotRepeated = addNotRepeatedNumbers(totalNumbersNotRepeated, arrayAllElements);
 
@@ -40,7 +40,7 @@ public class Exercicio2_5 {
         return false;
     }
 
-    public static int[] addAllElementsToOneDimensionalArray(int[][] array, int totalElements) {
+    public static int[] addMatrixElementsToOneDimensionalArray(int[][] array, int totalElements) {
         int indexAllElements = 0;
         int[] arrayAllElements = new int[totalElements];
         for (int currentIndex = 0; currentIndex < array.length; currentIndex++) {
