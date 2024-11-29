@@ -1,6 +1,7 @@
 package org.example.Bloco6.exercicio2;
 
 import org.example.Bloco5.Exercicio1.Exercicio1_1;
+import org.example.Bloco5.Exercicio1.Exercicio1_2;
 import org.example.Bloco5.Exercicio2.*;
 import org.example.Bloco6.exercicio1.VectorExercise6;
 
@@ -341,5 +342,64 @@ public class BidimensionalVector {
         return newRow;
     }
 
+    /// ///////////////////////////////////////////////////////////////////
 
+    /// ////////////////////////////// Exercise 19 ////////////////////////////
+
+    public int[][] invertMatrixColumnValues(){
+        if (isMatrixNullOrEmpty()) {
+            return new int[][]{{-1}};
+        }
+        for (int i = 0; i < _matrix.length - 1; i++) {
+            for (int j = 0; j < _matrix.length - i - 1; j++) {
+                int[] temp = _matrix[j];
+                _matrix[j] = _matrix[j+1];
+                _matrix[j+1] = temp;
+            }
+        }
+        return _matrix;
+    }
+
+    /// ///////////////////////////////////////////////////////////////////////
+
+    /// /////////////////// Exercise 20 ////////////////////////////////
+
+    public int[][] rotateMatrix90Degrees(){
+        if (isMatrixNullOrEmpty() || !Exercicio1_1.isMatrixSquare(_matrix) &&
+                !Exercicio1_2.isMatrixRectangle(_matrix)) {
+            return new int[][]{{-1}};
+        }
+        int sizeRows;
+        int sizeColumns;
+        if (Exercicio1_1.isMatrixSquare(_matrix)) {
+            sizeRows = _matrix.length;
+            sizeColumns = _matrix.length;
+        }  else {
+            sizeRows = _matrix[0].length;
+            sizeColumns = _matrix.length;
+        }
+
+        return rotate90(sizeRows, sizeColumns);
+    }
+
+
+
+    public int[][] rotate90(int sizeRows, int sizeColumns){
+        int[][] newMatrix = new int[sizeRows][sizeColumns];
+        int column = sizeColumns - 1;
+        for (int i = 0; i < _matrix.length; i++) {
+            int[] row = _matrix[i];
+            addValuesToMatrix(newMatrix, column, row);
+            column--;
+        }
+        return newMatrix;
+    }
+
+
+    public int[][] addValuesToMatrix(int[][] newMatrix, int column, int[] row){
+        for (int i = 0; i < newMatrix.length; i++) {
+            newMatrix[i][column] = row[i];
+        }
+        return newMatrix;
+    }
 }

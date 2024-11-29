@@ -351,7 +351,7 @@ class BidimensionalVectorTest {
         //act
         int[] result = bidimensionalVector.getAllElementsWhichHaveHigherEvenDigitsPercentageThanTheAverageOfEvenDigits();
         //assert
-        assertArrayEquals(result, expected);
+        assertArrayEquals(expected, result);
 
     }
 
@@ -370,14 +370,14 @@ class BidimensionalVectorTest {
 
     @ParameterizedTest
     @MethodSource("arrayProvider15")
-    void should_return_matrix_with_values_of_row_inverted(
+    void should_return_matrix_with_values_of_rows_inverted(
             int[][] initialBidimensionalArray, int[][] expected) {
         //arrange
         BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
         //act
         int[][] result = bidimensionalVector.invertMatrixRowValues();
         //assert
-        assertArrayEquals(result, expected);
+        assertArrayEquals(expected, result);
 
     }
 
@@ -393,5 +393,61 @@ class BidimensionalVectorTest {
                 Arguments.of(new int[][]{{},{}}, new int[][]{{-1}}),
                 Arguments.of(new int[][]{null ,{1,1}}, new int[][]{{-1}})
                 );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider16")
+    void should_return_matrix_with_values_of_columns_inverted(
+            int[][] initialBidimensionalArray, int[][] expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int[][] result = bidimensionalVector.invertMatrixColumnValues();
+        //assert
+        assertArrayEquals(expected, result);
+
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider16() {
+        return Stream.of(
+                Arguments.of(new int[][]{{1, 2, 3},{4, 5, 6}}, new int[][]{{4, 5, 6},{1, 2, 3}}),
+                Arguments.of(new int[][]{{0, 2, 3},{-4, 5, 6}}, new int[][]{{-4, 5, 6},{0, 2, 3}}),
+                Arguments.of(new int[][]{{1, 2, 3},{4, 5, 6},{7, 8, 9}}, new int[][]{{7, 8, 9},{4, 5, 6},{1, 2, 3}}),
+                Arguments.of(new int[][]{{1, 2},{4, 5, 6}}, new int[][]{{4, 5, 6},{1, 2}}),
+                Arguments.of(new int[][]{{0},{0}}, new int[][]{{0},{0}}),
+                Arguments.of(new int[][]{{},{1,1}}, new int[][]{{-1}}),
+                Arguments.of(null, new int[][]{{-1}}),
+                Arguments.of(new int[][]{{},{}}, new int[][]{{-1}}),
+                Arguments.of(new int[][]{null ,{1,1}}, new int[][]{{-1}})
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider17")
+    void should_return_matrix_rotated_90_degress(
+            int[][] initialBidimensionalArray, int[][] expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int[][] result = bidimensionalVector.rotateMatrix90Degrees();
+        //assert
+        assertArrayEquals(expected, result);
+
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider17() {
+        return Stream.of(
+                Arguments.of(new int[][]{{1, 2, 3},{4, 5, 6}}, new int[][]{{4, 1},{5, 2}, {6, 3}}),
+                Arguments.of(new int[][]{{0, 2, 3},{-4, 5, 6}}, new int[][]{{-4, 0},{5, 2}, {6, 3}}),
+                Arguments.of(new int[][]{{1, 2, 3},{4, 5, 6},{7, 8, 9}}, new int[][]{{7, 4, 1},{8, 5, 2}, {9, 6, 3}}),
+                Arguments.of(new int[][]{{1, 2},{4, 5, 6}}, new int[][]{{-1}}),
+                Arguments.of(new int[][]{{0},{0}}, new int[][]{{0,0}}),
+                Arguments.of(new int[][]{{},{1,1}}, new int[][]{{-1}}),
+                Arguments.of(null, new int[][]{{-1}}),
+                Arguments.of(new int[][]{{},{}}, new int[][]{{-1}}),
+                Arguments.of(new int[][]{null ,{1,1}}, new int[][]{{-1}})
+        );
     }
 }
