@@ -274,7 +274,7 @@ public class VectorExercise6 {
         return false;
     }
 
-    public int[] getElementsThatDigitsIsBiggerThanTheAverage(){
+    public int[] getElementsThatHaveMoreDigitsThanTheAverageOfDigits(){
         if (isArrayEmptyOrNull()) {
             return new int[]{-1};
         }

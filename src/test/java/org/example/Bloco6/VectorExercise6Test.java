@@ -384,7 +384,7 @@ class VectorExercise6Test {
         //arrange
         VectorExercise6 vectorExercise6 = new VectorExercise6(initialArray);
         //act
-        int[] result = vectorExercise6.getElementsThatDigitsIsBiggerThanTheAverage();
+        int[] result = vectorExercise6.getElementsThatHaveMoreDigitsThanTheAverageOfDigits();
         //assert
         assertArrayEquals(expected, result);
     }

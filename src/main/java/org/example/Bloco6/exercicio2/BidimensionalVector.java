@@ -285,6 +285,24 @@ public class BidimensionalVector {
 
     /// //////////////////////// Exercise 16 //////////////////////////////
 
+    public int[] getAllElementsWhichHaveHigherDigitsPercentageThanTheAverageOfDigits(){
+        if (isMatrixNullOrEmpty()) {
+            return new int[]{-1};
+        }
+        int totalElements = 0;
+        for (int i = 0; i < _matrix.length; i++){
+            totalElements += Exercicio2_5.getTotalElementsInArray(_matrix[i]);
+        }
+        Exercicio2_5.addMatrixElementsToOneDimensionalArray(_matrix, totalElements);
+        VectorExercise6 vectorExercise6 = new VectorExercise6(Exercicio2_5.addMatrixElementsToOneDimensionalArray(_matrix, totalElements));
+        return vectorExercise6.getElementsThatHaveMoreDigitsThanTheAverageOfDigits();
+    }
+
+
+    /// /////////////////////////////////////////////////////////////////
+
+    /// //////////////////////// Exercise 17 //////////////////////////////
+
     public int[] getAllElementsWhichHaveHigherEvenDigitsPercentageThanTheAverageOfEvenDigits(){
         if (isMatrixNullOrEmpty()) {
             return new int[]{-1};

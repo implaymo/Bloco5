@@ -1,5 +1,6 @@
 package org.example.Bloco6;
 
+import org.example.Bloco6.exercicio1.VectorExercise6;
 import org.example.Bloco6.exercicio2.BidimensionalVector;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -317,9 +318,32 @@ class BidimensionalVectorTest {
         );
     }
 
-
     @ParameterizedTest
     @MethodSource("arrayProvider13")
+    void should_return_elements_that_total_digits_is_bigger_than_the_average_number_of_digits(int[][] initialBidimensionalArray, int[] expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int[] result = bidimensionalVector.getAllElementsWhichHaveHigherDigitsPercentageThanTheAverageOfDigits();
+        //assert
+        assertArrayEquals(expected, result);
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider13() {
+        return Stream.of(
+                Arguments.of(new int[][]{{1 ,222, 33},{1 ,222, 33}}, new int[]{222, 222}),
+                Arguments.of(new int[][]{{1 ,222, 33},{1 ,-222, 33}}, new int[]{222, -222}),
+                Arguments.of(new int[][]{{1 ,1, 1}, {1, 1, 1}}, new int[]{}),
+                Arguments.of(new int[][]{{1 ,22, 33, 44, 55},{1 ,2, 3, 4, 5}}, new int[]{22, 33, 44, 55}),
+                Arguments.of(null, new int[]{-1}),
+                Arguments.of(new int[][]{{},{}}, new int[]{-1})
+        );
+    }
+
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider14")
     void should_return_array_with_elements_that_have_bigger_even_digits_average_than_the_total_average_of_even_digits(
         int[][] initialBidimensionalArray, int[] expected) {
         //arrange
@@ -332,7 +356,7 @@ class BidimensionalVectorTest {
     }
 
     // This method provides test data to the parameterized test
-    private static Stream<Arguments> arrayProvider13() {
+    private static Stream<Arguments> arrayProvider14() {
         return Stream.of(
                 Arguments.of(new int[][]{{248, 135, 860},{248, 135, 860}}, new int[]{248, 860, 248, 860}),
                 Arguments.of(new int[][]{{5, 5, 3},{-248, 135, 860}}, new int[]{-248, 860}),
