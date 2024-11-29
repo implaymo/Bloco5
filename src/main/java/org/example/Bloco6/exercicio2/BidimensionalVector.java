@@ -416,4 +416,19 @@ public class BidimensionalVector {
 
         return invertMatrixRowValues();
     }
+
+    /// //////////////////////////////////////////////////////////////////////777
+
+    /// ////////////////////// Exercise 22 ////////////////////////////////////7
+
+    public int[][] rotateMatrixMinus90Degrees(){
+        if (isMatrixNullOrEmpty() || !Exercicio1_1.isMatrixSquare(_matrix) &&
+                !Exercicio1_2.isMatrixRectangle(_matrix)) {
+            return new int[][]{{-1}};
+        }
+
+        _matrix = Exercicio2_11.transposeMatrix(_matrix);
+
+        return invertMatrixColumnValues();
+    }
 }

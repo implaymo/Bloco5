@@ -479,4 +479,32 @@ class BidimensionalVectorTest {
                 Arguments.of(new int[][]{null ,{1,1}}, new int[][]{{-1}})
         );
     }
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider19")
+    void should_return_matrix_rotated_minus_90_degress(
+            int[][] initialBidimensionalArray, int[][] expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int[][] result = bidimensionalVector.rotateMatrixMinus90Degrees();
+        //assert
+        assertArrayEquals(expected, result);
+
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider19() {
+        return Stream.of(
+                Arguments.of(new int[][]{{1, 2, 3},{4, 5, 6}}, new int[][]{{3, 6}, {2, 5}, {1, 4}}),
+                Arguments.of(new int[][]{{0, 2, 3},{-4, 5, 6}}, new int[][]{{3, 6}, {2, 5}, {0, -4}}),
+                Arguments.of(new int[][]{{1, 2, 3},{4, 5, 6},{7, 8, 9}}, new int[][]{{3, 6, 9}, {2, 5, 8}, {1, 4, 7}}),
+                Arguments.of(new int[][]{{1, 2},{4, 5, 6}}, new int[][]{{-1}}),
+                Arguments.of(new int[][]{{0},{0}}, new int[][]{{0,0}}),
+                Arguments.of(new int[][]{{},{1,1}}, new int[][]{{-1}}),
+                Arguments.of(null, new int[][]{{-1}}),
+                Arguments.of(new int[][]{{},{}}, new int[][]{{-1}}),
+                Arguments.of(new int[][]{null ,{1,1}}, new int[][]{{-1}})
+        );
+    }
 }
