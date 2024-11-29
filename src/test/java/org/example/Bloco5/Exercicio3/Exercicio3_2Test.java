@@ -1,4 +1,4 @@
-package org.example.Exercicio3;
+package org.example.Bloco5.Exercicio3;
 
 import org.example.Bloco5.Exercicio3.Exercicio3_2;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package org.example.Exercicio5;
+package org.example.Bloco5.Exercicio5;
 
 import org.example.Bloco5.Exercicio5.Exercicio5;
 import org.example.Bloco5.Exercicio5.SudokuBoardValidation;

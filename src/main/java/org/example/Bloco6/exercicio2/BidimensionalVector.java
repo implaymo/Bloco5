@@ -42,11 +42,9 @@ public class BidimensionalVector {
             if (i == rowToAddValue) {
                 int[] rowToAddColumn = _matrix[i];
                 _matrix[i] = addValueToRow(value, rowToAddColumn);
-                return true;
             }
         }
-
-        return false;
+        return true;
     }
 
     public int[] addValueToRow(int value, int[] rowToAddColumn) {
@@ -318,5 +316,30 @@ public class BidimensionalVector {
 
 
     /// /////////////////////////////////////////////////////////////////
+
+
+    /// /////////////////////////// Exercise 18 ///////////////////////////
+
+    public int[][] invertMatrixRowValues() {
+        if (isMatrixNullOrEmpty()){
+            return new int[][] {{-1}};
+        }
+        int[][] newMatrix = new int[_matrix.length][];
+        for (int i = 0; i < _matrix.length; i++) {
+            newMatrix[i] = invertRow(_matrix[i]);
+        }
+        return newMatrix;
+    }
+
+    public int[] invertRow(int[] row) {
+        int[] newRow = new int[row.length];
+        int index = 0;
+        for (int j = row.length - 1; j > -1; j--) {
+            newRow[index] = row[j];
+            index++;
+        }
+        return newRow;
+    }
+
 
 }

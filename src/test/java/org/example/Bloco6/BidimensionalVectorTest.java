@@ -367,4 +367,31 @@ class BidimensionalVectorTest {
         );
     }
 
+
+    @ParameterizedTest
+    @MethodSource("arrayProvider15")
+    void should_return_matrix_with_values_of_row_inverted(
+            int[][] initialBidimensionalArray, int[][] expected) {
+        //arrange
+        BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
+        //act
+        int[][] result = bidimensionalVector.invertMatrixRowValues();
+        //assert
+        assertArrayEquals(result, expected);
+
+    }
+
+    // This method provides test data to the parameterized test
+    private static Stream<Arguments> arrayProvider15() {
+        return Stream.of(
+                Arguments.of(new int[][]{{1, 2, 3},{4, 5, 6}}, new int[][]{{3, 2, 1},{6, 5, 4}}),
+                Arguments.of(new int[][]{{0, 2, 3},{-4, 5, 6}}, new int[][]{{3, 2, 0},{6, 5, -4}}),
+                Arguments.of(new int[][]{{1, 2},{4, 5, 6}}, new int[][]{{2, 1},{6, 5, 4}}),
+                Arguments.of(new int[][]{{0},{0}}, new int[][]{{0},{0}}),
+                Arguments.of(new int[][]{{},{1,1}}, new int[][]{{-1}}),
+                Arguments.of(null, new int[][]{{-1}}),
+                Arguments.of(new int[][]{{},{}}, new int[][]{{-1}}),
+                Arguments.of(new int[][]{null ,{1,1}}, new int[][]{{-1}})
+                );
+    }
 }

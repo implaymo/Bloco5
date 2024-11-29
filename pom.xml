@@ -37,10 +37,10 @@
                 </dependencies>
                 <configuration>
                     <targetClasses>
-                        <param>org.example.Exercicio5.*</param>
+                        <param>org.example.Bloco6.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>org.example.Exercicio5.*Test</param>
+                        <param>org.example.Bloco6.*Test</param>
                     </targetTests>
                     <outputFormats>
                         <param>XML</param>

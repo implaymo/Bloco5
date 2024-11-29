@@ -56,10 +56,8 @@ public class VectorExercise6 {
         if (count != 0) {
             int[] newArray = new int[_array.length - count];
             _array = removeValue(newArray, value);
-            return true;
         }
-
-        return false;
+        return true;
     }
 
 
