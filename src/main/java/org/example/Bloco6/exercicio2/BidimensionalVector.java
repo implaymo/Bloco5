@@ -384,7 +384,7 @@ public class BidimensionalVector {
 
 
 
-    public int[][] rotate90(int sizeRows, int sizeColumns){
+    private int[][] rotate90(int sizeRows, int sizeColumns){
         int[][] newMatrix = new int[sizeRows][sizeColumns];
         int column = sizeColumns - 1;
         for (int i = 0; i < _matrix.length; i++) {
@@ -396,10 +396,24 @@ public class BidimensionalVector {
     }
 
 
-    public int[][] addValuesToMatrix(int[][] newMatrix, int column, int[] row){
+    private int[][] addValuesToMatrix(int[][] newMatrix, int column, int[] row){
         for (int i = 0; i < newMatrix.length; i++) {
             newMatrix[i][column] = row[i];
         }
         return newMatrix;
+    }
+
+    /// ///////////////////////////////////////////////////////////////////////////////////7
+
+    /// //////////////////////////// Exercise 21 ////////////////////////////////////
+
+    public int[][] rotateMatrix180Degrees(){
+        if (isMatrixNullOrEmpty() || !Exercicio1_1.isMatrixSquare(_matrix) &&
+                !Exercicio1_2.isMatrixRectangle(_matrix)) {
+            return new int[][]{{-1}};
+        }
+        invertMatrixColumnValues();
+
+        return invertMatrixRowValues();
     }
 }
