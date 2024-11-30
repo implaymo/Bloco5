@@ -233,9 +233,6 @@ public class BidimensionalVector {
     /// //////////////////////// Exercise 12 ///////////////////////////////////
 
     public boolean isMatrixSquare() {
-        if (isMatrixNullOrEmpty()) {
-            return false;
-        }
         return Exercicio1_1.isMatrixSquare(_matrix);
     }
 

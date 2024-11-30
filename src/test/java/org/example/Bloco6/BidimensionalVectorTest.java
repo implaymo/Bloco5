@@ -82,6 +82,8 @@ class BidimensionalVectorTest {
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider2() {
         return Stream.of(
+                Arguments.of((Object) null),
+                Arguments.of((Object) new int[][]{null,{}}),
                 Arguments.of((Object) new int[][]{{},{}}),
                 Arguments.of((Object) new int[][]{{1,2}, {}}),
                 Arguments.of((Object) new int[][]{{1,2}, {}})
@@ -254,22 +256,23 @@ class BidimensionalVectorTest {
 
     @ParameterizedTest
     @MethodSource("arrayProvider10")
-    void should_return_true_if_matrix_square_and_symmetric(int[][] initialBidimensionalArray) {
+    void should_return_true_if_matrix_square_and_symmetric(int[][] initialBidimensionalArray, boolean expected) {
         //arrange
         BidimensionalVector bidimensionalVector = new BidimensionalVector(initialBidimensionalArray);
         //act
         boolean result = bidimensionalVector.isMatrixSquareAndSymmetric();
         //assert
-        assertTrue(result);
+        assertEquals(expected, result);
     }
 
     // This method provides test data to the parameterized test
     private static Stream<Arguments> arrayProvider10() {
         return Stream.of(
-                Arguments.of((Object) new int[][]{{1, 2, 3}, {2, 4, 5}, {3, 5, 6}}),
-                Arguments.of((Object) new int[][]{{4, 7}, {7, 2}}),
-                Arguments.of((Object) new int[][]{{1, 3, 5, 7}, {3, 2, 4, 6}, {5, 4, 3, 8}, {7, 6, 8, 9}})
-        );
+                Arguments.of((Object) new int[][]{{1, 2, 3}, {2, 4, 5}, {3, 5, 6}}, true),
+                Arguments.of((Object) new int[][]{{4, 7}, {7, 2}}, true),
+                Arguments.of((Object) new int[][]{{1, 3, 5, 7}, {3, 2, 4, 6}, {5, 4, 3, 8}, {7, 6, 8, 9}}, true),
+                Arguments.of((Object) new int[][]{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, false)
+                );
     }
 
     @ParameterizedTest
